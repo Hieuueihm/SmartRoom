@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP Web Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #myForm {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="ssid">SSID:</label><br>
+        <input type="text" id="ssid" name="ssid"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <label for="topic">Topic:</label><br>
+        <input type="text" id="topic" name="topic"><br><br>
+        <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+
+    <script>
+     function submitForm() {
+    var ssid = document.getElementById("ssid").value;
+    var password = document.getElementById("password").value;
+    var topic = document.getElementById("topic").value;
+
+    var data = {
+        "ssid": ssid,
+        "password": password,
+        "topic": topic
+    };
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Xử lý dữ liệu trả về nếu cần
+            console.log(this.responseText);
+        }
+    };
+    xhttp.open("POST", "/submit", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(data));
+}
+    </script>
+</body>
+</html

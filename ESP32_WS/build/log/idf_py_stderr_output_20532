@@ -1,0 +1,43 @@
+[0;33m--- WARNING: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM10 instead...[0m
+[0;33m--- esp-idf-monitor 1.4.0 on \\.\COM10 115200 ---[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400817d2: panic_abort at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/panic.c:472
+0x400890dd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/port/esp_system_chip.c:93
+0x400909d1: __assert_func at C:/Espressif/frameworks/esp-idf-v5.2.1/components/newlib/assert.c:81
+0x400820e3: heap_caps_free at C:/Espressif/frameworks/esp-idf-v5.2.1/components/heap/heap_caps.c:392 (discriminator 1)
+0x40090a01: free at C:/Espressif/frameworks/esp-idf-v5.2.1/components/newlib/heap.c:39
+0x400d6c5f: data_from_user_post_handler at D:/Workspace/Embedded/Projects/fol/project-name/main/htmlAction.c:91
+0x400e7681: httpd_uri at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_uri.c:329
+0x400e7e8d: httpd_parse_req at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_parse.c:667
+0x400e7f2c: httpd_req_new at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_parse.c:795
+0x400e6e40: httpd_sess_process at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_sess.c:426
+0x400e6164: httpd_process_session at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_main.c:255
+0x4015a62b: httpd_sess_enum at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_sess.c:50 (discriminator 1)
+0x400e685a: httpd_server at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_main.c:305
+0x400e68c2: httpd_thread at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_main.c:327
+0x40089be9: vPortTaskWrapper at C:/Espressif/frameworks/esp-idf-v5.2.1/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0;33m0x400817d2: panic_abort at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/panic.c:472
+0x400890dd: esp_system_abort at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/port/esp_system_chip.c:93
+0x400909d1: __assert_func at C:/Espressif/frameworks/esp-idf-v5.2.1/components/newlib/assert.c:81
+0x400820e3: heap_caps_free at C:/Espressif/frameworks/esp-idf-v5.2.1/components/heap/heap_caps.c:392 (discriminator 1)
+0x40090a01: free at C:/Espressif/frameworks/esp-idf-v5.2.1/components/newlib/heap.c:39
+0x400d6c5f: data_from_user_post_handler at D:/Workspace/Embedded/Projects/fol/project-name/main/htmlAction.c:91
+0x400e7681: httpd_uri at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_uri.c:329
+0x400e7e8d: httpd_parse_req at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_parse.c:667
+0x400e7f2c: httpd_req_new at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_parse.c:795
+0x400e6e40: httpd_sess_process at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_sess.c:426
+0x400e6164: httpd_process_session at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_main.c:255
+0x4015a62b: httpd_sess_enum at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_sess.c:50 (discriminator 1)
+0x400e685a: httpd_server at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_main.c:305
+0x400e68c2: httpd_thread at C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_http_server/src/httpd_main.c:327
+0x40089be9: vPortTaskWrapper at C:/Espressif/frameworks/esp-idf-v5.2.1/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c:134
+[0m
+[0;33m0x40080400: _init at ??:?
+[0m
+[0m
