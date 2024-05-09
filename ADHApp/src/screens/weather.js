@@ -101,7 +101,7 @@ export default function WeatherScreen() {
     handleScroll("hourly");
   }
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.weatherBgColor }}>
+    <ScrollView style={{ flex: 1, backgroundColor: COLORS.weatherBgColor }}>
       {/*header*/}
 
       <SafeAreaView
@@ -154,8 +154,7 @@ export default function WeatherScreen() {
           style={{
             marginLeft: 0,
             width: screenWidth / 2,
-            height: screenHeight / 4,
-            marginBottom: screenHeight / 80,
+            height: screenHeight / 6,
           }}
         />
       </View>
@@ -163,9 +162,8 @@ export default function WeatherScreen() {
         <Text
           style={{
             color: COLORS.white,
-            fontSize: 60,
-            fontWeight: "600",
-            marginTop: -screenHeight / 12,
+            fontSize: 50,
+            fontWeight: "500",
           }}
         >
           {current?.temp_c}
@@ -176,40 +174,43 @@ export default function WeatherScreen() {
         style={{
           flexDirection: "row",
           justifyContent: "center",
-          marginTop: -screenHeight / 80,
         }}
       >
         <View>
           <Text
             style={{
               color: COLORS.white,
-              fontSize: 20,
+              fontSize: 18,
               textAlign: "center", // Căn giữa văn bản
             }}
           >
             {current?.condition?.text}
           </Text>
           <View
-            style={{
-              flexDirection: "row",
-              textAlign: "space-around", // Căn giữa các phần tử
-              marginTop: screenHeight / 100, // Tạo khoảng cách giữa hai dòng văn bản
-            }}
+            style={{ justifyContent: "center", flex: 1, flexDirection: "row" }}
           >
-            <Text
+            <View
               style={{
-                color: COLORS.white,
-                fontSize: 16,
-                paddingHorizontal: screenWidth / 50,
+                flexDirection: "row",
+                textAlign: "space-around", // Căn giữa các phần tử
+                marginTop: screenHeight / 100, // Tạo khoảng cách giữa hai dòng văn bản
               }}
             >
-              Max: {forecast?.forecastday[0]?.day?.maxtemp_c}
-              {"\u2103"}
-            </Text>
-            <Text style={{ color: COLORS.white, fontSize: 16 }}>
-              Min: {forecast?.forecastday[0]?.day?.mintemp_c}
-              {"\u2103"}
-            </Text>
+              <Text
+                style={{
+                  color: COLORS.white,
+                  fontSize: 16,
+                  paddingHorizontal: screenWidth / 50,
+                }}
+              >
+                Max: {forecast?.forecastday[0]?.day?.maxtemp_c}
+                {"\u2103"}
+              </Text>
+              <Text style={{ color: COLORS.white, fontSize: 16 }}>
+                Min: {forecast?.forecastday[0]?.day?.mintemp_c}
+                {"\u2103"}
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -600,7 +601,7 @@ export default function WeatherScreen() {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

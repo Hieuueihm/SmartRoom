@@ -10,7 +10,24 @@ export const handleLogin = async (data) => {
       },
       data: data,
     });
-    console.log(result);
+    // console.log(result);
+    return result;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const handleGetUserById = async (data) => {
+  try {
+    const result = await APIManager("/getUserById", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "content-type": "application/json",
+      },
+      data: data,
+    });
+    // console.log(result);
     return result;
   } catch (error) {
     return error;

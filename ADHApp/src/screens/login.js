@@ -48,6 +48,7 @@ const LoginScreen = () => {
               "userId",
               String(res.data.data.userId)
             );
+
             navigation.navigate(ROUTES.HOMESCREEN);
           } else {
             utils.Toast.showToast(

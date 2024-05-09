@@ -15,16 +15,16 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name={ROUTES.LOGINSCREEN}
           component={LoginScreen}
           options={{ headerShown: false }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name={ROUTES.WEATHERSCREEN}
           component={WeatherScreen}
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name={ROUTES.HOMESCREEN}
           component={HomeScreen}
