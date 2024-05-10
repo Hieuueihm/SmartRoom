@@ -1,8 +1,8 @@
-# Install script for directory: D:/Workspace/Embedded/Projects/fol/project-name
+# Install script for directory: D:/Workspace/Embedded/Projects/fol/ESP32_WS
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/project-name")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ESP32_WS")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("D:/Workspace/Embedded/Projects/fol/project-name/build/esp-idf/cmake_install.cmake")
+  include("D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/esp-idf/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/Workspace/Embedded/Projects/fol/project-name/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

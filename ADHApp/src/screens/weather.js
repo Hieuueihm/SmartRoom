@@ -105,7 +105,11 @@ export default function WeatherScreen() {
       {/*header*/}
 
       <SafeAreaView
-        style={{ flexDirection: "row", marginTop: screenHeight / 15 }}
+        style={{
+          flexDirection: "row",
+          marginTop: screenHeight / 15,
+          marginBottom: screenHeight / 50,
+        }}
       >
         <TouchableOpacity
           onPress={() => {
@@ -148,13 +152,21 @@ export default function WeatherScreen() {
 
       {/*image weather*/}
 
-      <View style={{ flexDirection: "row", justifyContent: "center" }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          margin: 0,
+          maxHeight: screenHeight / 5,
+        }}
+      >
         <Image
           source={{ uri: `https:${current?.condition.icon}` }}
           style={{
             marginLeft: 0,
             width: screenWidth / 2,
-            height: screenHeight / 6,
+            height: screenHeight / 4,
+            resizeMode: "contain",
           }}
         />
       </View>

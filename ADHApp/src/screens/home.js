@@ -24,6 +24,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import SwitchButton from "./switch";
 import Slider from "@react-native-community/slider";
 // import CircularSlider from "./circularSlider";
+import init from "react_native_mqtt";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default function HomeScreen() {
   const navigation = useNavigation();
 
@@ -62,12 +65,41 @@ export default function HomeScreen() {
   const [userId, setUserId] = useState();
   const [userData, setUserData] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [conn, setConn] = useState(false);
 
   const [slider, setSlider] = useState(0);
+  useEffect(() => {
+    getAllData();
+    getCurrentUser();
+    client.onConnectionLost = onConnectionLost;
+    client.onMessageArrived = onMessageArrived;
+    // onConnect();
+    client.connect({
+      onSuccess: () => {
+        console.log("success");
+
+        client.subscribe("/topic/qos0", { qos: 0 });
+        setConn(true);
+        const message = new Paho.MQTT.Message(options.id + ":" + "dcmm");
+        message.destinationName = "/topic/abc";
+        client.send(message);
+      },
+      useSSL: false,
+      onFailure: (e) => {
+        console.log("here is the error", e);
+      },
+    });
+
+    return () => {
+      clearInterval(timeIntervalGetStateData);
+      client.disconnect();
+    };
+  }, []);
 
   const fetchWeatherAndCO2 = () => {
     setIsVisible(!isVisible);
   };
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchWeatherAndCO2();
@@ -98,20 +130,42 @@ export default function HomeScreen() {
       });
     }
   };
+  init({
+    size: 10000,
+    storageBackend: AsyncStorage,
+    defaultExpires: 1000 * 3600 * 24,
+    enableCache: true,
+    reconnect: true,
+    sync: {},
+  });
+  const options = {
+    host: "broker.hivemq.com",
+    port: 8000,
+    id: "id_" + parseInt(Math.random() * 100000),
+  };
+  const client = new Paho.MQTT.Client(options.host, options.port, options.id);
+
   const timeIntervalGetStateData = setInterval(() => {
     getAllData();
   }, 100000);
 
-  useEffect(() => {
-    getAllData();
-    getCurrentUser();
-    return () => {
-      clearInterval(timeIntervalGetStateData);
-    };
-  }, []);
+  function onConnectionLost(responseObject) {
+    if (responseObject.errorCode !== 0) {
+      console.log("onConnectionLost:" + responseObject.errorMessage);
+    }
+  }
+
+  function onMessageArrived(message) {
+    console.log("onMessageArrived:" + message.payloadString);
+  }
+  const onFail = () => {
+    console.log("faile");
+  };
+
   if (weather) {
     var { current, location, forecast } = weather;
   }
+
   return (
     <ScrollView style={styles.container}>
       {/*-------------------------------------- top view------------------------------------------------- */}
@@ -203,14 +257,16 @@ export default function HomeScreen() {
               </>
             )}
           </TouchableOpacity>
-          <AntDesign
-            name="poweroff"
-            style={{
-              fontSize: 24,
-              color: "red",
-              marginTop: screenHeight / 30,
-            }}
-          />
+          <TouchableOpacity>
+            <AntDesign
+              name="poweroff"
+              style={{
+                fontSize: 24,
+                color: "red",
+                marginTop: screenHeight / 30,
+              }}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       {/*--------------------------------------end top view------------------------------------------------- */}

@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.16)
 
 if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   file(REMOVE_RECURSE
+  "ESP32_WS.bin"
+  "ESP32_WS.map"
   "bootloader\\bootloader.bin"
   "bootloader\\bootloader.elf"
   "bootloader\\bootloader.map"
@@ -17,8 +19,6 @@ if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   "index.html.S"
   "ldgen_libraries"
   "ldgen_libraries.in"
-  "project-name.bin"
-  "project-name.map"
   "project_elf_src_esp32.c"
   "x509_crt_bundle.S"
   )

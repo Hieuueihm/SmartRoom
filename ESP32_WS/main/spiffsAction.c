@@ -1,5 +1,6 @@
 #include "spiffsAction.h"
 #include "esp_err.h"
+#include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 static const char *SPIFFS_TAG = "SPIFFS";
@@ -34,29 +35,42 @@ void init_spiffs() {
 #define MAX_FILE_SIZE 1024
 
 char *read_file_from_spiffs(const char *filename) {
-  // Mở tệp từ SPIFFS
   FILE *file = fopen(filename, "r");
   if (file == NULL) {
-    // Tạo một tệp mới nếu không tồn tại
     file = fopen(filename, "w");
-    if (file != NULL) {
-      ESP_LOGI(SPIFFS_TAG, "Created new file '%s'", filename);
-    }
-  }
-
-  static char file_content[MAX_FILE_SIZE];
-  size_t bytes_read = fread(file_content, 1, MAX_FILE_SIZE, file);
-  if (bytes_read <= 0) {
-    ESP_LOGI(SPIFFS_TAG, "file is empty '%s'", filename);
     fclose(file);
     return NULL;
   }
+
+  fseek(file, 0, SEEK_END);
+  long file_size = ftell(file);
+  fseek(file, 0, SEEK_SET);
+
+  if (file_size <= 0 || file_size >= MAX_FILE_SIZE) {
+    ESP_LOGE(SPIFFS_TAG, "Invalid file size '%ld' for file '%s'", file_size,
+             filename);
+    fclose(file);
+    return NULL;
+  }
+
+  char *file_content = (char *)malloc(file_size + 1);
+  if (file_content == NULL) {
+    ESP_LOGE(SPIFFS_TAG, "Failed to allocate memory for file content '%s'",
+             filename);
+    fclose(file);
+    return NULL;
+  }
+
+  size_t bytes_read = fread(file_content, 1, file_size, file);
   fclose(file);
 
-  // Đảm bảo chuỗi kết thúc bằng NULL
-  file_content[bytes_read] = '\0';
+  if (bytes_read != file_size) {
+    ESP_LOGE(SPIFFS_TAG, "Error reading file '%s'", filename);
+    free(file_content);
+    return NULL;
+  }
 
-  vTaskDelay(pdMS_TO_TICKS(10));
+  file_content[bytes_read] = '\0';
 
   return file_content;
 }

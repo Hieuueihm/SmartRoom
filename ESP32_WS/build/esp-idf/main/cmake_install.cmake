@@ -1,8 +1,8 @@
-# Install script for directory: D:/Workspace/Embedded/Projects/fol/project-name/main
+# Install script for directory: D:/Workspace/Embedded/Projects/fol/ESP32_WS/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/project-name")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ESP32_WS")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
