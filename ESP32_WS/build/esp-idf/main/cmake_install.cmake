@@ -1,4 +1,4 @@
-# Install script for directory: D:/Workspace/Embedded/Projects/fol/ESP32_WS/main
+# Install script for directory: D:/Workspace/Embedded/End_PJ/ESP32_WS/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

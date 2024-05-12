@@ -8,6 +8,7 @@
 #include <unistd.h>
 
 #include "driver/gpio.h"
+#include "driver/ledc.h"
 #include "fileAction.h"
 #include "htmlAction.h"
 #include "mqttAction.h"
@@ -90,7 +91,7 @@ void app_main(void) {
   } else {
     ESP_LOGI(TAG, "file is not empty");
     // station_mode();
-    wifi_init_sta("Tiem Giat", "14141414");
+    wifi_init_sta("Hieu1", "12345678");
     mqtt_app_start();
   }
 }

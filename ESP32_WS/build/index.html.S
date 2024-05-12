@@ -1,4 +1,4 @@
-/* * Data converted from D:/Workspace/Embedded/Projects/fol/ESP32_WS/html/index.html
+/* * Data converted from D:/Workspace/Embedded/End_PJ/ESP32_WS/html/index.html
  * (null byte appended)
  */
 .data

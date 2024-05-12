@@ -5,18 +5,18 @@ cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
   "C:/Espressif/frameworks/esp-idf-v5.2.1/components/bootloader/subproject"
-  "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader"
-  "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix"
-  "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix/tmp"
-  "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp"
-  "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix/src"
-  "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp"
+  "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader"
+  "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix"
+  "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix/tmp"
+  "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp"
+  "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix/src"
+  "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "D:/Workspace/Embedded/Projects/fol/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "D:/Workspace/Embedded/End_PJ/ESP32_WS/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

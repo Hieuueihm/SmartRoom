@@ -71,7 +71,7 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base,
 
 void mqtt_app_start(void) {
   esp_mqtt_client_config_t mqtt_cfg = {
-      .broker.address.uri = "mqtt://broker.hivemq.com:1883",
+      .broker.address.uri = "mqtt://mqttvcloud.innoway.vn:1883",
   };
   esp_mqtt_client_handle_t client = esp_mqtt_client_init(&mqtt_cfg);
   /* The last argument may be used to pass data to the event handler, in this
