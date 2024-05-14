@@ -12,7 +12,7 @@ int main(void){
 		systick_init();
 	
 		lcd_i2c_init();
-		lcd_i2c_msg(1, 0,"ABCxzx");
+		lcd_i2c_msg(1, 0,"uete");
 	while(1){
 	
 	}

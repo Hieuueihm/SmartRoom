@@ -6,7 +6,6 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "systick.h"
-#include "gpio.h"
 
 #define I2C_FM 0x2D
 #define I2C_SM 0xB4
@@ -16,12 +15,12 @@
 typedef enum{Error = 0, Success = !Error} Status;
 
 
-Status I2C_Init(unsigned short speed_mode);
-Status I2C_Add(char address, char RW);
-Status I2C_Write(char address, char data[]);
-Status I2C_Data(char data);
-Status I2C_Start();
-Status I2C_Stop();
+Status i2c_init(unsigned short speed_mode);
+Status i2c_add(char address, char RW);
+Status i2c_write(char address, char data[]);
+Status i2c_data(char data);
+Status i2c_start();
+Status i2c_stop();
 
 
 

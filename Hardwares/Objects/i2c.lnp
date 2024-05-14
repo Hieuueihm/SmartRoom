@@ -3,7 +3,6 @@
 ".\objects\i2c.o"
 ".\objects\systick.o"
 ".\objects\i2c_lcd.o"
-".\objects\gpio.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_rcc.o"

@@ -419,16 +419,6 @@
               <FileType>1</FileType>
               <FilePath>.\i2c_lcd.c</FilePath>
             </File>
-            <File>
-              <FileName>gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>gpio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\gpio.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -510,14 +500,5 @@
       </file>
     </files>
   </RTE>
-
-  <LayerInfo>
-    <Layers>
-      <Layer>
-        <LayName>i2c</LayName>
-        <LayPrjMark>1</LayPrjMark>
-      </Layer>
-    </Layers>
-  </LayerInfo>
 
 </Project>
