@@ -14,5 +14,8 @@
 .\objects\main.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
 .\objects\main.o: i2c.h
 .\objects\main.o: systick.h
+.\objects\main.o: gpio.h
 .\objects\main.o: i2c_lcd.h
+.\objects\main.o: systick.h
+.\objects\main.o: uart.h
 .\objects\main.o: systick.h

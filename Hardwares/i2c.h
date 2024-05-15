@@ -6,6 +6,7 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_gpio.h"
 #include "systick.h"
+#include "gpio.h"
 
 #define I2C_FM 0x2D
 #define I2C_SM 0xB4

@@ -1,14 +1,14 @@
 #include "i2c_lcd.h"
 
 /*
-P0 -> RS
-P1 -> RW
-P2 -> E
-P3 -> Screen light // auto 1
-P4 -> D4
-P5 -> D5
-P6 -> D6
-P7 -> D7
+P0-> RS (LCD cmd wire)
+P1-> RW (LCD cmd wire)
+P2-> E (LCD cmd wire)
+P3-> Screen light --> Must always be 1
+P4-> D4 (LCD Data wire)
+P5-> D5 (LCD Data wire)
+P6-> D6 (LCD Data wire)
+P7-> D7 (LCD Data wire)
 
 */
 
@@ -51,16 +51,16 @@ void lcd_i2c_data(unsigned char data)
 
 void lcd_i2c_cmd(unsigned char data)
 {
-	
 	trans_slave(0x08);
 	delay_us(10);
 	trans_slave(0x0C);
 	delay_us(5);
-	trans_slave(((data & 0x00f0) | 0x0C));
+	// data 
+	trans_slave(((data & 0x00f0) | 0x0C)); // 00001100
 	delay_us(10);
-	trans_slave(((data & 0x00f0) | 0x08));
+	trans_slave(((data & 0x00f0) | 0x08)); // 00001000
 	delay_us(20);
-	trans_slave(0x0C);
+	trans_slave(0x0C); //00001100
 	delay_us(5);
 
 	trans_slave((((data << 4) & 0x00f0) | 0x0C));
@@ -70,65 +70,57 @@ void lcd_i2c_cmd(unsigned char data)
 
 void lcd_i2c_init(void)
 {
+	//d7-d6-d5-d4-light-en-rw-rs
   i2c_init(I2C_FM);
 	delay_ms(20);
 
-	trans_slave(0x08);
+	trans_slave(0x08); // 00001000
+	delay_us(10);
+	// enable high
+	trans_slave(0x0C); // 00001100
+	delay_us(5);	
+	trans_slave(0x3C); // 00111100
+	delay_us(10);
+	trans_slave(0x38); // 00111000
+	delay_ms(1);
+	
+	trans_slave(0x08); // 00001000
 	delay_us(10);
 	trans_slave(0x0C);
 	delay_us(5);
-
 	trans_slave(0x3C);
 	delay_us(10);
 	trans_slave(0x38);
-	
-	delay_ms(10);
-	
-
-	trans_slave(0x08);
-	delay_us(10);
-	trans_slave(0x0C);
-	delay_us(5);
-
-	trans_slave(0x3C);
-	delay_us(10);
-
-	trans_slave(0x38);
-	
 	delay_ms(1);
 	
 
 	
 	trans_slave(0x08);
 	delay_us(10);
-
 	trans_slave(0x0C);
 	delay_us(5);
-
 	trans_slave(0x3C);
 	delay_us(10);
-	
 	trans_slave(0x38);
-	
 	delay_ms(1);
 	
 	
 	trans_slave(0x08);
 	delay_us(10);
-
 	trans_slave(0x0C);
 	delay_us(5);
 	
-	trans_slave(0x2C);
+	trans_slave(0x2C); //00101100
 	delay_us(10);
-	trans_slave(0x28);
+	trans_slave(0x28); // 00101000
 	
 	
-	lcd_i2c_cmd(0x2C); // 4 bit communication mode / 2 lines
+	lcd_i2c_cmd(0x2C); //00101100 // 4 bit communication mode // 2 lines-display N = 1
 	delay_ms(5);
 	lcd_i2c_cmd(0x0C); // Display ON
 	delay_ms(5);
-	lcd_i2c_cmd(0x01); // Clear Display
+	
+	lcd_i2c_cmd(0x01); // Clear Display // rs = 1	
 	delay_ms(5);
 	lcd_i2c_cmd(0x02); // Get back to initial address
 	delay_ms(5);

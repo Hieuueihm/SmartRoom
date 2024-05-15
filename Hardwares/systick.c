@@ -6,11 +6,11 @@ void systick_init(void)
 	SysTick->CTRL = 0;
 	SysTick->LOAD = 0x00FFFFFF;
 	SysTick->VAL = 0;
-	SysTick->CTRL = 5;
+	SysTick->CTRL = 5; // clk source = 1, tickint = 0, enable = 1
 }
 static void Delaymicro(void)
 {
-	SysTick->LOAD = 72;
+	SysTick->LOAD = SystemCoreClock / 1000000;
 	SysTick->VAL = 0;
 	while((SysTick->CTRL & 0x00010000) == 0);
 }
@@ -26,7 +26,7 @@ void delay_us(unsigned long t)
 
 static void DelayMillis(void)
 {
-	SysTick->LOAD = 0x11940;
+	SysTick->LOAD = SystemCoreClock / 1000;
 	SysTick->VAL = 0;
 	while((SysTick->CTRL & 0x00010000) == 0);
 }

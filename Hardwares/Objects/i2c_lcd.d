@@ -15,3 +15,4 @@
 .\objects\i2c_lcd.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
 .\objects\i2c_lcd.o: i2c.h
 .\objects\i2c_lcd.o: systick.h
+.\objects\i2c_lcd.o: gpio.h
