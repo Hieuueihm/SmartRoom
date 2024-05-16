@@ -1,7 +1,6 @@
 #ifndef UART_H
 #define UART_H
 
-
 /// USART3 -> PB10 (Tx) and PB11(Rx)
 /// USART2 -> PA2 (Tx) and PA3(Rx)
 /// USART1 -> PA9 (Tx) and PA10(Rx)
@@ -21,5 +20,3 @@ void uart_init(unsigned short usart, unsigned short br);
 void uart_tx(unsigned short usart, char c);
 char uart_rx(unsigned short usart);
 void uart_send_msg(unsigned short uart, char str[]);
-
-#endif

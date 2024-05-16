@@ -1,7 +1,5 @@
 #include "uart.h"
 
-
-
 void uart_init(unsigned short usart, unsigned short br)
 {
  /// If using USART1 clock speed 72Mhz, else 36Mhz
