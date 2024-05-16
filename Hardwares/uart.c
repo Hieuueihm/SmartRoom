@@ -10,8 +10,8 @@ void uart_init(unsigned short usart, unsigned short br)
 	RCC->APB2ENR |= (1 << 14); 
 	//USART1->CR1 &= ~(1 << 3);
 	//USART1->CR1 &= ~(1 << 2);
-		gpio_init(PortA,9,OUT50,OUT_AF_PP);
-	gpio_init(PortA,10,IN,IN_PUSHPULL);
+	gpio_init(PortA,9,OUT_AF_PP,OUT50);
+	gpio_init(PortA,10,IN_PUSHPULL,IN);
 	if(br == BR_9600){
 		USART1->BRR = 0b1110101000110; 
 		
@@ -30,8 +30,8 @@ void uart_init(unsigned short usart, unsigned short br)
 	RCC->APB1ENR |= (1<< 17);
 	//USART2->CR1 &= ~(1 << 3);
 	//USART2->CR1 &= ~(1 << 2);
-		gpio_init(PortA,2,OUT50,OUT_AF_PP);
-	gpio_init(PortA,3,IN,IN_PUSHPULL);
+	gpio_init(PortA,2,OUT_AF_PP,OUT50);
+	gpio_init(PortA,3,IN_PUSHPULL,IN);
 	if(br == BR_9600){
 		USART2->BRR = 0b111010100011; 
 		
@@ -48,8 +48,8 @@ void uart_init(unsigned short usart, unsigned short br)
 	else if (usart == UART3)
 	{
 	RCC->APB1ENR |= (1 << 18);
-	gpio_init(PortB,10,OUT50,OUT_AF_PP);
-	gpio_init(PortB,11,IN,IN_PUSHPULL);
+	gpio_init(PortB,10,OUT_AF_PP,OUT50);
+	gpio_init(PortB,11,IN_PUSHPULL,IN);
 	if(br == BR_9600){
 		USART3->BRR = 0b111010100011; 
 	}else if(br == BR_115200){

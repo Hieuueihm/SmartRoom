@@ -17,3 +17,6 @@
 .\objects\main.o: gpio.h
 .\objects\main.o: i2c_lcd.h
 .\objects\main.o: uart.h
+.\objects\main.o: adc.h
+.\objects\main.o: pwm.h
+.\objects\main.o: C:\Keil_v5\ARM\Compilerv506\Bin\..\include\stdio.h

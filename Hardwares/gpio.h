@@ -4,16 +4,19 @@
 
 #define PortA 1
 #define PortB 2
+#define PortC 3
 
 
 #define GPIO_PIN_RESET 0
 #define GPIO_PIN_SET 1
 
+// mode
 #define IN 0
 #define OUT10 1
 #define OUT2 2
 #define OUT50 3
 
+// cnf
 #define IN_ANA 0
 #define IN_FLOAT 1
 #define IN_PUSHPULL 2
