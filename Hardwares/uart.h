@@ -1,12 +1,22 @@
 #ifndef UART_H
 #define UART_H
 
+/// USART3 -> PB10 (Tx) and PB11(Rx)
+/// USART2 -> PA2 (Tx) and PA3(Rx)
+/// USART1 -> PA9 (Tx) and PA10(Rx)
+	
 #include "stm32f10x.h"
+#include "gpio.h"
+#include "systick.h"
 
-void UART_Init(void);
-void UART_SendChar(char ch);
-void UART_SendString(const char *str);
-char UART_ReceiveChar(void);
-void UART_ReceiveString(char *buffer, uint32_t bufferSize);
+#define BR_9600 0
+#define BR_115200 1
 
-#endif
+#define UART1 1
+#define UART2 2
+#define UART3 3
+
+void uart_init(unsigned short usart, unsigned short br);
+void uart_tx(unsigned short usart, char c);
+char uart_rx(unsigned short usart);
+void uart_send_msg(unsigned short uart, char str[]);
