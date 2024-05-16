@@ -16,6 +16,4 @@
 .\objects\main.o: systick.h
 .\objects\main.o: gpio.h
 .\objects\main.o: i2c_lcd.h
-.\objects\main.o: systick.h
 .\objects\main.o: uart.h
-.\objects\main.o: systick.h

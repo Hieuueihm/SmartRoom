@@ -13,15 +13,19 @@
 #define ACK 0
 #define NACK 1
 
+
+#define I2C_1 0
+#define I2C_2 1
+
 typedef enum{Error = 0, Success = !Error} Status;
 
 
-Status i2c_init(unsigned short speed_mode);
-Status i2c_add(char address, char RW);
-Status i2c_write(char address, char data[]);
-Status i2c_data(char data);
-Status i2c_start();
-Status i2c_stop();
+Status i2c_init(uint8_t i2c, unsigned short speed_mode);
+Status i2c_add(uint8_t i2c, char address, char RW);
+Status i2c_write(uint8_t i2c, char address, char data[]);
+Status i2c_data(uint8_t i2c, char data);
+Status i2c_start(uint8_t i2c);
+Status i2c_stop(uint8_t i2c);
 
 
 

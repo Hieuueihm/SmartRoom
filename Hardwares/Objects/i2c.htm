@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\i2c.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\i2c.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed May 15 23:01:55 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu May 16 17:09:14 2024
 <BR><P>
-<H3>Maximum Stack Usage =         72 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        100 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; lcd_i2c_msg &rArr; lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 <P>
@@ -94,8 +94,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[3b]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
-<LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<BR><BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
 <P><STRONG><a name="[3d]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -185,8 +185,8 @@ Global Symbols
 <P><STRONG><a name="[84]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000E))
 
 <P><STRONG><a name="[3e]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
-<BR><BR>[Called By]<UL><LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
-<LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
+<LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
 <P><STRONG><a name="[85]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
@@ -205,7 +205,7 @@ Global Symbols
 <P><STRONG><a name="[86]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[45]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 100 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; lcd_i2c_msg &rArr; lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -480,8 +480,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
-<P><STRONG><a name="[50]"></a>add_slave</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, i2c_lcd.o(i.add_slave))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = add_slave &rArr; i2c_add
+<P><STRONG><a name="[50]"></a>add_slave</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, i2c_lcd.o(i.add_slave))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_add
 </UL>
@@ -516,34 +516,34 @@ Global Symbols
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[51]"></a>i2c_add</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, i2c.o(i.i2c_add))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = i2c_add
+<P><STRONG><a name="[51]"></a>i2c_add</STRONG> (Thumb, 158 bytes, Stack size 12 bytes, i2c.o(i.i2c_add))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = i2c_add
 </UL>
 <BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_slave
 </UL>
 
-<P><STRONG><a name="[62]"></a>i2c_data</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, i2c.o(i.i2c_data))
+<P><STRONG><a name="[62]"></a>i2c_data</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, i2c.o(i.i2c_data))
 <BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trans_slave
 </UL>
 
-<P><STRONG><a name="[56]"></a>i2c_init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, i2c.o(i.i2c_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = i2c_init &rArr; gpio_init
+<P><STRONG><a name="[56]"></a>i2c_init</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, i2c.o(i.i2c_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = i2c_init &rArr; gpio_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_init
 </UL>
 
-<P><STRONG><a name="[61]"></a>i2c_start</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, i2c.o(i.i2c_start))
+<P><STRONG><a name="[61]"></a>i2c_start</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, i2c.o(i.i2c_start))
 <BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trans_slave
 </UL>
 
-<P><STRONG><a name="[63]"></a>i2c_stop</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, i2c.o(i.i2c_stop))
+<P><STRONG><a name="[63]"></a>i2c_stop</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, i2c.o(i.i2c_stop))
 <BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trans_slave
 </UL>
 
-<P><STRONG><a name="[58]"></a>lcd_i2c_cmd</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, i2c_lcd.o(i.lcd_i2c_cmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = lcd_i2c_cmd &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[58]"></a>lcd_i2c_cmd</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, i2c_lcd.o(i.lcd_i2c_cmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = lcd_i2c_cmd &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trans_slave
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
@@ -552,8 +552,8 @@ Global Symbols
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_init
 </UL>
 
-<P><STRONG><a name="[5a]"></a>lcd_i2c_data</STRONG> (Thumb, 112 bytes, Stack size 8 bytes, i2c_lcd.o(i.lcd_i2c_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[5a]"></a>lcd_i2c_data</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, i2c_lcd.o(i.lcd_i2c_data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trans_slave
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
@@ -561,8 +561,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_send
 </UL>
 
-<P><STRONG><a name="[5b]"></a>lcd_i2c_init</STRONG> (Thumb, 250 bytes, Stack size 8 bytes, i2c_lcd.o(i.lcd_i2c_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = lcd_i2c_init &rArr; lcd_i2c_cmd &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[5b]"></a>lcd_i2c_init</STRONG> (Thumb, 294 bytes, Stack size 8 bytes, i2c_lcd.o(i.lcd_i2c_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = lcd_i2c_init &rArr; lcd_i2c_cmd &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trans_slave
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_cmd
@@ -573,8 +573,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5c]"></a>lcd_i2c_msg</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, i2c_lcd.o(i.lcd_i2c_msg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = lcd_i2c_msg &rArr; lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[5c]"></a>lcd_i2c_msg</STRONG> (Thumb, 62 bytes, Stack size 24 bytes, i2c_lcd.o(i.lcd_i2c_msg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = lcd_i2c_msg &rArr; lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_send
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_cmd
@@ -583,8 +583,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5d]"></a>lcd_i2c_send</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, i2c_lcd.o(i.lcd_i2c_send))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[5d]"></a>lcd_i2c_send</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, i2c_lcd.o(i.lcd_i2c_send))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_data
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
@@ -592,8 +592,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_i2c_msg
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = main &rArr; lcd_i2c_msg &rArr; lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = main &rArr; lcd_i2c_msg &rArr; lcd_i2c_send &rArr; lcd_i2c_data &rArr; trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_send_msg
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
@@ -609,8 +609,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[59]"></a>trans_slave</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, i2c_lcd.o(i.trans_slave))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = trans_slave &rArr; add_slave &rArr; i2c_add
+<P><STRONG><a name="[59]"></a>trans_slave</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, i2c_lcd.o(i.trans_slave))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = trans_slave &rArr; add_slave &rArr; i2c_add
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;add_slave
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;i2c_stop

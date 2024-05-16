@@ -28,3 +28,56 @@ void gpio_init(unsigned short PORT, unsigned short PIN, unsigned short CNF, unsi
 		
 	
 }
+
+void gpio_write(unsigned short PORT, unsigned short PIN, unsigned short PinState){
+		if(PORT == PortA){
+			if (PinState != GPIO_PIN_RESET)
+			{
+				GPIOA->BSRR = PIN;
+
+			}
+			else
+			{
+				GPIOA->BSRR = (uint32_t)PIN << 16u;
+			}
+		}else if(PORT == PortB){
+			if (PinState != GPIO_PIN_RESET)
+			{
+				GPIOB->BSRR = PIN;
+
+			}
+			else
+			{
+				GPIOB->BSRR = (uint32_t)PIN << 16u;
+			}
+		}
+	
+	
+}
+
+uint8_t gpio_read(unsigned short PORT, unsigned short PIN){
+	uint8_t result;
+	if(PORT == PortA){
+		if ((GPIOA->IDR & PIN) != (uint32_t)GPIO_PIN_RESET)
+		{
+			result = GPIO_PIN_SET;
+	 }
+	  else
+	 {
+		 result = GPIO_PIN_RESET;
+	 }
+	}else if(PORT == PortB){
+		if ((GPIOB->IDR & PIN) != (uint32_t)GPIO_PIN_RESET)
+		{
+			result = GPIO_PIN_SET;
+	 }
+	  else
+	 {
+		 result = GPIO_PIN_RESET;
+	 }
+	}
+	
+	 return result;
+}
+
+
