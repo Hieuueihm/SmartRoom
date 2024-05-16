@@ -439,6 +439,36 @@
               <FileType>5</FileType>
               <FilePath>.\uart.h</FilePath>
             </File>
+            <File>
+              <FileName>servo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\servo.h</FilePath>
+            </File>
+            <File>
+              <FileName>servo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\servo.c</FilePath>
+            </File>
+            <File>
+              <FileName>relay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\relay.h</FilePath>
+            </File>
+            <File>
+              <FileName>relay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\relay.c</FilePath>
+            </File>
+            <File>
+              <FileName>ir_sensor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ir_sensor.h</FilePath>
+            </File>
+            <File>
+              <FileName>ir_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ir_sensor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -22,23 +22,32 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Workspace\Embedded\End_PJ\Hardwares\i2c.uvprojx
-Project File Date:  05/15/2024
+Project File Date:  05/16/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\Compilerv506\Bin'
 Build target 'Target 1'
+compiling servo.c...
+compiling uart.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+uart.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+uart.c: 2 warnings, 0 errors
+compiling ir_sensor.c...
 compiling main.c...
 systick.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 i2c_lcd.h(22): warning:  #1-D: last line of file ends without a newline
   #endif
-uart.h(25): warning:  #1-D: last line of file ends without a newline
+uart.h(24): warning:  #1-D: last line of file ends without a newline
   #endif
 main.c: 3 warnings, 0 errors
+compiling relay.c...
 linking...
-Program Size: Code=2860 RO-data=268 RW-data=20 ZI-data=1636  
+Program Size: Code=1508 RO-data=268 RW-data=20 ZI-data=1636  
 FromELF: creating hex file...
-".\Objects\i2c.axf" - 0 Error(s), 3 Warning(s).
+".\Objects\i2c.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -88,7 +97,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
