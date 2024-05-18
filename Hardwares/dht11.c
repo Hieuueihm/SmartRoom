@@ -98,15 +98,7 @@ uint8_t DHT11_ReadByte(void) {
    }
    return data;
 }
-void delay_us(uint32_t microseconds) {
-   SysTick->LOAD = (SystemCoreClock / 1000000) * microseconds - 1; 
-   SysTick->VAL = 0; 
-	 // Enable SysTick
-   SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk; 
-   while ((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) == 0);
-	 // disable SysTick
-	 SysTick->CTRL = 0; 
-}
+
 void SystemClock_Config(void) {
 	 RCC->CR |= RCC_CR_HSEON; 
    while (!(RCC->CR & RCC_CR_HSERDY)); 

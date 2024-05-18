@@ -10,6 +10,8 @@
 ".\objects\ir_sensor.o"
 ".\objects\adc.o"
 ".\objects\pwm.o"
+".\objects\mq135.o"
+".\objects\dht11.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_gpio.o"
 ".\objects\stm32f10x_rcc.o"
