@@ -14,10 +14,10 @@ PB1 -> ADC12_IN9
 
 */
 
-char adc_init(uint8_t adc, short port, short pin)
+uint8_t adc_init(uint8_t adc, short port, short pin)
 	{
 	char channel;
-	char result = 0;
+	uint8_t result = 0;
 	if(port == PortA)
 	{
 		if(pin < 8)
@@ -63,8 +63,8 @@ char adc_init(uint8_t adc, short port, short pin)
 
 	return result ;
 }
-char adc_check(uint8_t adc, short port, short pin){
-	char check = 0;
+uint8_t adc_check(uint8_t adc, short port, short pin){
+	uint8_t check = 0;
 	if(adc == ADC_1)
 		{
 			if(ADC1->SR & 2)

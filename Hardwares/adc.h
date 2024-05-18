@@ -8,9 +8,11 @@
 #define ADC_1 1
 #define ADC_2 2
 
-char adc_init(uint8_t adc, short port, short pin);
-char adc_check(uint8_t adc, short port, short pin);
+uint8_t adc_init(uint8_t adc, short port, short pin);
+uint8_t adc_check(uint8_t adc, short port, short pin);
 int adc_rx(uint8_t adc, short port, short pin);
+
+
 
 
 #endif

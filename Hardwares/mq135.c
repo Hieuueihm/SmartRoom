@@ -21,26 +21,9 @@ void GPIO_Config(void) {
     GPIOA->CRL &= ~((0x3 << 4) | (0x3 << 6));
     GPIOA->CRL |= (0x0 << 4); 
 }
-void SystemClock_Config(void) {
-    RCC->CR |= RCC_CR_HSEON;
-    while (!(RCC->CR & RCC_CR_HSERDY));
-    RCC->CFGR |= RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL9;
-    RCC->CR |= RCC_CR_PLLON;
-    while (!(RCC->CR & RCC_CR_PLLRDY));
-    RCC->CFGR |= RCC_CFGR_SW_PLL;
-    while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL);
-    SystemCoreClockUpdate();
-}
-void delay_us(uint32_t microseconds) {
-    SysTick->LOAD = (SystemCoreClock / 1000000) * microseconds - 1;
-    SysTick->VAL = 0;
-    SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
-    while ((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) == 0);
-    SysTick->CTRL = 0;
-}
+
 void MQ135_Init(MQ135 *sensor, double rl, double vcc, double ppm) {
     GPIO_Config();
-    USART1_Config();
     SystemClock_Config();
     sensor->RL = rl;
     sensor->Vcc = vcc;
