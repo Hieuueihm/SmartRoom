@@ -20,3 +20,4 @@
 .\objects\main.o: adc.h
 .\objects\main.o: pwm.h
 .\objects\main.o: C:\Keil_v5\ARM\Compilerv506\Bin\..\include\stdio.h
+.\objects\main.o: lowpass.h
