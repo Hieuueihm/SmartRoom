@@ -49,6 +49,7 @@ uint8_t adc_init(uint8_t adc, short port, short pin)
 			delay_ms(100);
 			ADC1->CR2 |= 1;
 			ADC1->CR2 |= 2;
+
 	}
 	else if(adc == ADC_2)
 	{
@@ -59,6 +60,7 @@ uint8_t adc_init(uint8_t adc, short port, short pin)
 			delay_ms(100);
 			ADC2->CR2 |= 1;
 			ADC2->CR2 |= 2;
+		
 	}
 
 	return result ;
@@ -66,7 +68,13 @@ uint8_t adc_init(uint8_t adc, short port, short pin)
 uint8_t adc_check(uint8_t adc, short port, short pin){
 	uint8_t check = 0;
 	if(adc == ADC_1)
+
 		{
+			//	ADC1->CR2 |= 4;
+				//while((ADC1 -> CR2 & (4)) == 1){}
+
+
+			// ADC1->CR2 |= (1 << 2);
 			if(ADC1->SR & 2)
 			{
 				check  = 1;
@@ -74,6 +82,10 @@ uint8_t adc_check(uint8_t adc, short port, short pin){
 		}
 		else if(adc == ADC_2)
 		{
+			//ADC2->CR2 |= 4;
+		
+			//while((ADC2 -> CR2 & (4)) == 1){}
+			// ADC2->CR2 |= (1 << 2);
 			if(ADC2->SR & 2)
 			{
 				check  = 1;

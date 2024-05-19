@@ -509,6 +509,16 @@
               <FileType>1</FileType>
               <FilePath>.\dht11.c</FilePath>
             </File>
+            <File>
+              <FileName>lowpass.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lowpass.c</FilePath>
+            </File>
+            <File>
+              <FileName>lowpass.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lowpass.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

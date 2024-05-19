@@ -7,10 +7,11 @@
 #include "adc.h"
 #include "pwm.h"
 #include <stdio.h>
+#include "lowpass.h"
 
 
 char num[10];
-	volatile int analog_rx = 0;
+volatile int analog_rx = 0;
 
 
 int main(void){
@@ -22,6 +23,10 @@ int main(void){
 	//	lcd_i2c_init(I2C_2);
 		//lcd_i2c_msg(I2C_2, 1, 0,"AaBCddddxzD;x");
 		//lcd_i2c_msg(I2C_1, 1, 0,"AaBCddddxzDzzx");
+	
+		lowpass_filter lp;
+		lowpass_init(&lp, 0.3, 100);
+	
 	
 		pwm_init(TIM_2, CHANNEL_3);
 		set_duty(TIM_2, CHANNEL_3, 15000);
@@ -42,13 +47,14 @@ int main(void){
 				
 		//	}
 			
-					analog_rx = adc_rx(ADC_1, PortA, 1);
+				analog_rx = adc_rx(ADC_1, PortA, 1);
 				set_duty(TIM_2, CHANNEL_3, (analog_rx / 4096.0) * ARRD);
+				analog_rx = filt(&lp, analog_rx);
 				snprintf(num, sizeof(num), "%d, ",   analog_rx);	
 
 				//snprintf(num, sizeof(num), "%.2f\n",   (analog_rx / 4096.0) * ARRD);	
 			uart_send_msg(UART3, num);
-				delay_ms(1000);
+				delay_ms(10);
 
 
 			}
