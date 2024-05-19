@@ -26,7 +26,7 @@ float filt(lowpass_filter * lp, float xn){
 	  lp->y[0] = 0;
     lp->x[0] = xn;
 	
-    lp->y[0] += lp->a[0] * lp->y[0 + 1] + lp->b[0] * lp->x[0];
+    lp->y[0] += lp->a[0] * lp->y[1] + lp->b[0] * lp->x[0];
     
     lp->y[0] += lp->b[1] * lp->x[1];
 	
