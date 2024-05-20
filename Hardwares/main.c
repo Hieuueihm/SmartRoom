@@ -50,11 +50,11 @@ int main(void){
 				analog_rx = adc_rx(ADC_1, PortA, 1);
 				set_duty(TIM_2, CHANNEL_3, (analog_rx / 4096.0) * ARRD);
 				analog_rx = filt(&lp, analog_rx);
-				snprintf(num, sizeof(num), "%d, ",   analog_rx);	
+			//	snprintf(num, sizeof(num), "%d, ",   analog_rx);	
 
-				//snprintf(num, sizeof(num), "%.2f\n",   (analog_rx / 4096.0) * ARRD);	
+				snprintf(num, sizeof(num), "%.2f\n",   (analog_rx / 4096.0) * ARRD);	
 			uart_send_msg(UART3, num);
-				delay_ms(10);
+			//	delay_ms(10);
 
 
 			}
