@@ -8,8 +8,4 @@ typedef struct {
     double ppm_smoke; // Maximum concentration of smoke in ppm
 } MQ135;
 void MQ135_Init(MQ135 *sensor, double rl, double vcc, double ppm);
-int MQ135_ReadAnalog() ;
 int MQ135_Calculate(MQ135 *sensor);
-void GPIO_Config(void);
-void SystemClock_Config(void);
-void delay_us(uint32_t microseconds);
