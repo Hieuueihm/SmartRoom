@@ -1,6 +1,6 @@
 #include "dht11.h"
 #include <stdio.h>
-
+#include "systick.h"
 
 
 TemperatureHumidity readTemperatureHumidity() {

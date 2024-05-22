@@ -8,7 +8,6 @@ int read_GPIO(void);
 void DHT11_Start(void);
 int DHT11_CheckResponse(void);
 uint8_t DHT11_ReadByte(void);
-void delay_us(uint32_t microseconds);
 void SystemClock_Config(void);
 
 typedef struct {

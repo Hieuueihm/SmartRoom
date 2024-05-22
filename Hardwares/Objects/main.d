@@ -1,4 +1,5 @@
 .\objects\main.o: main.c
+.\objects\main.o: dht11.h
 .\objects\main.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
 .\objects\main.o: .\RTE\_Target_1\RTE_Components.h
 .\objects\main.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h
@@ -12,12 +13,7 @@
 .\objects\main.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
 .\objects\main.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 .\objects\main.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
-.\objects\main.o: i2c.h
-.\objects\main.o: systick.h
-.\objects\main.o: gpio.h
-.\objects\main.o: i2c_lcd.h
-.\objects\main.o: uart.h
-.\objects\main.o: adc.h
-.\objects\main.o: pwm.h
 .\objects\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
-.\objects\main.o: lowpass.h
+.\objects\main.o: uart.h
+.\objects\main.o: gpio.h
+.\objects\main.o: systick.h

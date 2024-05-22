@@ -14,3 +14,4 @@
 .\objects\dht11.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 .\objects\dht11.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
 .\objects\dht11.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
+.\objects\dht11.o: systick.h
