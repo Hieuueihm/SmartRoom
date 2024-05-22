@@ -8,7 +8,8 @@
 #include "pwm.h"
 #include <stdio.h>
 #include "lowpass.h"
-
+#include "servo.h"
+#include "relay.h"
 
 char num[10];
 volatile int analog_rx = 0;
@@ -20,45 +21,42 @@ int main(void){
 		systick_init();
 	
 		//lcd_i2c_init(I2C_1);
-	//	lcd_i2c_init(I2C_2);
-		//lcd_i2c_msg(I2C_2, 1, 0,"AaBCddddxzD;x");
+		//lcd_i2c_init(I2C_2);
+	//	lcd_i2c_msg(I2C_2, 1, 0,"AaBCddddxzD;x");
 		//lcd_i2c_msg(I2C_1, 1, 0,"AaBCddddxzDzzx");
 	
-		lowpass_filter lp;
-		lowpass_init(&lp, 0.3, 100);
+		//lowpass_filter lp;
+		//lowpass_init(&lp, 0.3, 100);
 	
 	
-		pwm_init(TIM_2, CHANNEL_3);
-		set_duty(TIM_2, CHANNEL_3, 15000);
+		//pwm_init(TIM_3, CHANNEL_3);
+	//	set_duty(TIM_3, CHANNEL_3, ARRD);
 	
-		uart_init(UART3, BR_115200);
-		adc_init(ADC_1, PortA, 1);
+	uart_init(UART3, BR_115200);
+		//servo_init();
+
+		adc_init(ADC_1, PortA, 3);
+		relay_init();
+
+				//relay_on(1);
+				//delay_ms(3000);
+					//relay_on(2);
+
+
+
+
 	
 
 
 	while(1){
-			
-		
-			
-	//		if(adc_check(ADC_1, PortA, 1)){
-				
 		
 
-				
-		//	}
+			analog_rx = adc_rx(ADC_1, PortA, 3);
 			
-				analog_rx = adc_rx(ADC_1, PortA, 1);
-				set_duty(TIM_2, CHANNEL_3, (analog_rx / 4096.0) * ARRD);
-				analog_rx = filt(&lp, analog_rx);
-			//	snprintf(num, sizeof(num), "%d, ",   analog_rx);	
+			snprintf(num, sizeof(num), "%d, ",   analog_rx);	
 
-				snprintf(num, sizeof(num), "%.2f\n",   (analog_rx / 4096.0) * ARRD);	
 			uart_send_msg(UART3, num);
-			//	delay_ms(10);
-
-
-			}
-		
-
+			delay_ms(100);
+		}
 	}
 		
