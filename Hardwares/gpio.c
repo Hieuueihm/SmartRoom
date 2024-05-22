@@ -57,13 +57,13 @@ void gpio_write(unsigned short PORT, unsigned short PIN, unsigned short PinState
     if (PinState == GPIO_PIN_SET) {
         switch (PORT) {
             case PortA:
-                GPIOA->BSRR = (1 << PIN);
+                GPIOA->BSRR |= (1 << PIN);
                 break;
             case PortB:
-                GPIOB->BSRR = (1 << PIN);
+                GPIOB->BSRR |= (1 << PIN);
                 break;
             case PortC:
-                GPIOC->BSRR = (1 << PIN);
+                GPIOC->BSRR |= (1 << PIN);
                 break;
             default:
                 break;
@@ -71,13 +71,13 @@ void gpio_write(unsigned short PORT, unsigned short PIN, unsigned short PinState
     } else {
         switch (PORT) {
             case PortA:
-                GPIOA->BSRR = (1 << (PIN + 16));
+                GPIOA->BSRR |= (1 << (PIN + 16));
                 break;
             case PortB:
-                GPIOB->BSRR = (1 << (PIN + 16));
+                GPIOB->BSRR |= (1 << (PIN + 16));
                 break;
             case PortC:
-                GPIOC->BSRR = (1 << (PIN + 16));
+                GPIOC->BSRR |= (1 << (PIN + 16));
                 break;
             default:
                 break;
