@@ -1,14 +1,14 @@
 #include "stm32f10x.h"
 #include "relay.h"
 
-#define RELAY_GPIO_PIN1     (1 << 0) // Pin A0
-#define RELAY_GPIO_PIN2     (1 << 1) // Pin A1
+#define RELAY_GPIO_PIN1     (1 << 5) // Pin A5
+#define RELAY_GPIO_PIN2     (1 << 6) // Pin A6
 
 void relay_init(void)
 {
     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
-    GPIOA->CRL &= ~(GPIO_CRL_MODE0 | GPIO_CRL_CNF0 | GPIO_CRL_MODE1 | GPIO_CRL_CNF1);  // Pin A0, A1
-    GPIOA->CRL |= GPIO_CRL_MODE0_0 | GPIO_CRL_MODE1_0;
+    GPIOA->CRL &= ~(GPIO_CRL_MODE5 | GPIO_CRL_CNF5 | GPIO_CRL_MODE6 | GPIO_CRL_CNF6);  
+    GPIOA->CRL |= GPIO_CRL_MODE5_0 | GPIO_CRL_MODE6_0;
 }
 
 void relay_on(uint8_t relay_num)

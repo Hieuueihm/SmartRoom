@@ -1,7 +1,7 @@
 Dependencies for Project 'i2c', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARM_Compiler_5.06u7
-F (.\main.c)(0x664EF60A)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (dht11.h)(0x664F0162)
+F (.\main.c)(0x664F02BE)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (dht11.h)(0x664F02E8)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F58EE)
@@ -18,9 +18,9 @@ I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E4AD2)
 I (uart.h)(0x664A03C8)
 I (gpio.h)(0x664A03C8)
 I (systick.h)(0x664A03C8)
-F (.\i2c.h)(0x664A03C8)()
+F (.\i2c.h)(0x664F0268)()
 F (.\i2c.c)(0x664A03C8)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
-I (i2c.h)(0x664A03C8)
+I (i2c.h)(0x664F0268)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F58EE)
@@ -65,10 +65,10 @@ I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x664A03C8)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x6643A01C)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x6643A01C)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6643A01C)
-I (i2c.h)(0x664A03C8)
+I (i2c.h)(0x664F0268)
 I (systick.h)(0x664A03C8)
 I (gpio.h)(0x664A03C8)
-F (.\gpio.c)(0x664A03C8)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+F (.\gpio.c)(0x664F0268)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
 I (gpio.h)(0x664A03C8)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
@@ -101,7 +101,7 @@ I (gpio.h)(0x664A03C8)
 I (systick.h)(0x664A03C8)
 F (.\uart.h)(0x664A03C8)()
 F (.\servo.h)(0x664A03C8)()
-F (.\servo.c)(0x664A03C8)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\servo.o --omf_browse .\objects\servo.crf --depend .\objects\servo.d)
+F (.\servo.c)(0x664F0268)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\servo.o --omf_browse .\objects\servo.crf --depend .\objects\servo.d)
 I (servo.h)(0x664A03C8)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
@@ -116,7 +116,7 @@ I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Dev
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x6643A01C)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6643A01C)
 F (.\relay.h)(0x664A03C8)()
-F (.\relay.c)(0x664A03C8)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\relay.o --omf_browse .\objects\relay.crf --depend .\objects\relay.d)
+F (.\relay.c)(0x664F0268)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\relay.o --omf_browse .\objects\relay.crf --depend .\objects\relay.d)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F58EE)
@@ -130,9 +130,9 @@ I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Dev
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x6643A01C)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h)(0x6643A01C)
 I (relay.h)(0x664A03C8)
-F (.\ir_sensor.h)(0x664A03C8)()
-F (.\ir_sensor.c)(0x664A03C8)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\ir_sensor.o --omf_browse .\objects\ir_sensor.crf --depend .\objects\ir_sensor.d)
-I (ir_sensor.h)(0x664A03C8)
+F (.\ir_sensor.h)(0x664F0268)()
+F (.\ir_sensor.c)(0x664F0268)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\ir_sensor.o --omf_browse .\objects\ir_sensor.crf --depend .\objects\ir_sensor.d)
+I (ir_sensor.h)(0x664F0268)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F58EE)
@@ -197,9 +197,9 @@ I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E4AD2)
 I (adc.h)(0x664A0509)
 I (gpio.h)(0x664A03C8)
 I (systick.h)(0x664A03C8)
-F (.\dht11.h)(0x664F0162)()
-F (.\dht11.c)(0x664F014F)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\dht11.o --omf_browse .\objects\dht11.crf --depend .\objects\dht11.d)
-I (dht11.h)(0x664F0162)
+F (.\dht11.h)(0x664F02E8)()
+F (.\dht11.c)(0x664F030C)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="539" -D_RTE_ -DSTM32F10X_MD -D_RTE_-o .\objects\dht11.o --omf_browse .\objects\dht11.crf --depend .\objects\dht11.d)
+I (dht11.h)(0x664F02E8)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h)(0x6643A01C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x664A0525)
 I (C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626F58EE)

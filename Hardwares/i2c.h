@@ -8,6 +8,9 @@
 #include "systick.h"
 #include "gpio.h"
 
+// PB6 SCL
+// PB7 SCA
+
 #define I2C_FM 0x2D
 #define I2C_SM 0xB4
 #define ACK 0

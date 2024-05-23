@@ -10,7 +10,8 @@ int DHT11_CheckResponse(void);
 uint8_t DHT11_ReadByte(void);
 void SystemClock_Config(void);
 void delay_uis(uint32_t microseconds);
-typedef struct {
+typedef struct
+{
     float temperature;
     float humidity;
 } TemperatureHumidity;

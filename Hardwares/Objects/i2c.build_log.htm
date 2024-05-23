@@ -22,43 +22,47 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 E:\TaiLieu\HKII-23-24\co so do luong\SmartRoom\Hardwares\i2c.uvprojx
-Project File Date:  05/19/2024
+Project File Date:  05/23/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin'
 Rebuild target 'Target 1'
+compiling systick.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+systick.c: 1 warning, 0 errors
 compiling i2c_lcd.c...
 systick.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 i2c_lcd.h(22): warning:  #1-D: last line of file ends without a newline
   #endif
 i2c_lcd.c: 2 warnings, 0 errors
-compiling servo.c...
-compiling gpio.c...
-compiling systick.c...
+compiling i2c.c...
 systick.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
-systick.c: 1 warning, 0 errors
+i2c.c: 1 warning, 0 errors
 compiling main.c...
-dht11.h(17): warning:  #1-D: last line of file ends without a newline
+dht11.h(18): warning:  #1-D: last line of file ends without a newline
   TemperatureHumidity readTemperatureHumidity();
-dht11.h(17): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
+dht11.h(18): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
   TemperatureHumidity readTemperatureHumidity();
 systick.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 uart.h(24): warning:  #1-D: last line of file ends without a newline
   #endif
 main.c: 4 warnings, 0 errors
-compiling i2c.c...
-systick.h(9): warning:  #1-D: last line of file ends without a newline
-  #endif
-i2c.c: 1 warning, 0 errors
+compiling servo.c...
+compiling gpio.c...
 compiling uart.c...
 systick.h(9): warning:  #1-D: last line of file ends without a newline
   #endif
 uart.h(24): warning:  #1-D: last line of file ends without a newline
   #endif
 uart.c: 2 warnings, 0 errors
+compiling ir_sensor.c...
+ir_sensor.h(7): warning:  #1-D: last line of file ends without a newline
+  uint8_t ir2_sensor_read(void);
+ir_sensor.c: 1 warning, 0 errors
 compiling relay.c...
 compiling adc.c...
 systick.h(9): warning:  #1-D: last line of file ends without a newline
@@ -66,7 +70,6 @@ systick.h(9): warning:  #1-D: last line of file ends without a newline
 adc.h(18): warning:  #1-D: last line of file ends without a newline
   #endif
 adc.c: 2 warnings, 0 errors
-compiling ir_sensor.c...
 compiling mq135.c...
 mq135.h(11): warning:  #1-D: last line of file ends without a newline
   int MQ135_Calculate(MQ135 *sensor);
@@ -81,29 +84,29 @@ pwm.h(25): warning:  #1-D: last line of file ends without a newline
 pwm.c(274): warning:  #1-D: last line of file ends without a newline
   }
 pwm.c: 2 warnings, 0 errors
+compiling dht11.c...
+dht11.h(18): warning:  #1-D: last line of file ends without a newline
+  TemperatureHumidity readTemperatureHumidity();
+dht11.h(18): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
+  TemperatureHumidity readTemperatureHumidity();
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+dht11.c(149): warning:  #1-D: last line of file ends without a newline
+  }
+dht11.c: 4 warnings, 0 errors
 compiling lowpass.c...
 lowpass.h(20): warning:  #1-D: last line of file ends without a newline
   #endif		
 lowpass.c: 1 warning, 0 errors
-compiling dht11.c...
-dht11.h(17): warning:  #1-D: last line of file ends without a newline
-  TemperatureHumidity readTemperatureHumidity();
-dht11.h(17): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
-  TemperatureHumidity readTemperatureHumidity();
-systick.h(9): warning:  #1-D: last line of file ends without a newline
-  #endif
-dht11.c(125): warning:  #1-D: last line of file ends without a newline
-  }
-dht11.c: 4 warnings, 0 errors
 assembling startup_stm32f10x_md.s...
 compiling misc.c...
 compiling stm32f10x_gpio.c...
-compiling stm32f10x_rcc.c...
 compiling system_stm32f10x.c...
+compiling stm32f10x_rcc.c...
 linking...
-Program Size: Code=8712 RO-data=444 RW-data=20 ZI-data=1636  
+Program Size: Code=8728 RO-data=444 RW-data=20 ZI-data=1636  
 FromELF: creating hex file...
-".\Objects\i2c.axf" - 0 Error(s), 22 Warning(s).
+".\Objects\i2c.axf" - 0 Error(s), 23 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -153,7 +156,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
