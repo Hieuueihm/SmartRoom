@@ -1,4 +1,3 @@
-
 #include "ir_sensor.h"
 
 #define IR1_SENSOR_GPIO_PIN     (1 << 3)  // PIN A3
@@ -8,9 +7,11 @@ void ir_sensors_init(void)
 {
     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
 
-    gpio_init(PortA, 3, IN_PUSHPULL, IN);
-    gpio_init(PortA, 4, IN_PUSHPULL, IN);
-	
+    GPIOA->CRL &= ~(GPIO_CRL_MODE3 | GPIO_CRL_CNF3); 
+    GPIOA->CRL |= GPIO_CRL_CNF3_1; 
+
+    GPIOA->CRL &= ~(GPIO_CRL_MODE4 | GPIO_CRL_CNF4); 
+    GPIOA->CRL |= GPIO_CRL_CNF4_1; 
 }
 
 uint8_t ir1_sensor_read(void)

@@ -1,62 +1,59 @@
 #include "stm32f10x.h"
-#include "i2c.h"
-#include "i2c_lcd.h"
-#include "systick.h"
-#include "uart.h"
-#include "gpio.h"
-#include "adc.h"
-#include "pwm.h"
-#include <stdio.h>
-#include "lowpass.h"
-#include "servo.h"
 #include "relay.h"
+#include "ir_sensor.h"
+#include "servo.h"
+#include "systick.h"
 
-char num[10];
-volatile int analog_rx = 0;
+//Relay Pin5,6
+//Servo Pin1/TIM2
+//Ir Pin3,4
 
+int people_count = 0;
+int ir1_last_state = 1, ir2_last_state = 1;
+void peopleCount(void);
 
-int main(void){
-	
-	
-		systick_init();
-	
-		//lcd_i2c_init(I2C_1);
-		//lcd_i2c_init(I2C_2);
-	//	lcd_i2c_msg(I2C_2, 1, 0,"AaBCddddxzD;x");
-		//lcd_i2c_msg(I2C_1, 1, 0,"AaBCddddxzDzzx");
-	
-		//lowpass_filter lp;
-		//lowpass_init(&lp, 0.3, 100);
-	
-	
-		//pwm_init(TIM_3, CHANNEL_3);
-	//	set_duty(TIM_3, CHANNEL_3, ARRD);
-	
-	uart_init(UART3, BR_115200);
-		//servo_init();
+int main(void)
+{
+	servo_init();
+	ir_sensors_init();
+	systick_init();
+	relay_init();
+	servo_rotate(0);
+  while(1){
+		if (ir1_sensor_read() == 0 || ir2_sensor_read() == 0) {
+        servo_rotate(90);
+			  delay_ms(5000);				
+			  servo_rotate(0);
+				delay_ms(1000);
+				relay_on(1);
+		}
+  }
+}
 
-		adc_init(ADC_1, PortA, 3);
-		relay_init();
+void peopleCount(void) {
+	int ir1_current = ir1_sensor_read();
+	int ir2_current = ir2_sensor_read();
 
-				//relay_on(1);
-				//delay_ms(3000);
-					//relay_on(2);
-
-
-
-
-	
-
-
-	while(1){
-		
-
-			analog_rx = adc_rx(ADC_1, PortA, 3);
-			
-			snprintf(num, sizeof(num), "%d, ",   analog_rx);	
-
-			uart_send_msg(UART3, num);
-			delay_ms(100);
+	if (ir1_last_state == 1 && ir1_current == 0) {
+		while (ir1_sensor_read() == 0);
+		delay_ms(50);  
+		if (ir2_sensor_read() == 0) {
+			while (ir2_sensor_read() == 0); 
+			people_count++; 
 		}
 	}
-		
+
+	
+	if (ir2_last_state == 1 && ir2_current == 0) {
+		while (ir2_sensor_read() == 0); 
+		delay_ms(50); 
+		if (ir1_sensor_read() == 0) {
+			while (ir1_sensor_read() == 0); 
+			if (people_count > 0) 
+				people_count--; 
+		}
+	}
+
+	ir1_last_state = ir1_current;
+	ir2_last_state = ir2_current;
+}
