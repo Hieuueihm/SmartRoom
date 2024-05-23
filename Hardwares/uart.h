@@ -20,3 +20,5 @@ void uart_init(unsigned short usart, unsigned short br);
 void uart_tx(unsigned short usart, char c);
 char uart_rx(unsigned short usart);
 void uart_send_msg(unsigned short uart, char str[]);
+
+#endif

@@ -216,6 +216,7 @@ void SystemInit (void)
 
   /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
 #ifndef STM32F10X_CL
+
   RCC->CFGR &= (uint32_t)0xF8FF0000;
 #else
   RCC->CFGR &= (uint32_t)0xF0FF0000;
@@ -989,7 +990,7 @@ static void SetSysClockTo72(void)
   
   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/    
   /* Enable HSE */    
-  RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+  RCC->CR |= ((uint32_t)RCC_CR_HSEON); // HSE is 8Mhz
  
   /* Wait till HSE is ready and if Time out is reached exit */
   do
@@ -1018,13 +1019,13 @@ static void SetSysClockTo72(void)
 
  
     /* HCLK = SYSCLK */
-    RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1;
+    RCC->CFGR |= (uint32_t)RCC_CFGR_HPRE_DIV1; // ahb
       
     /* PCLK2 = HCLK */
-    RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1;
+    RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE2_DIV1; // apb1
     
     /* PCLK1 = HCLK */
-    RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2;
+    RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2; // apb2
 
 #ifdef STM32F10X_CL
     /* Configure PLLs ------------------------------------------------------*/
