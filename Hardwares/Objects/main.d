@@ -23,3 +23,6 @@
 .\objects\main.o: lowpass.h
 .\objects\main.o: servo.h
 .\objects\main.o: relay.h
+.\objects\main.o: ir_sensor.h
+.\objects\main.o: dht11.h
+.\objects\main.o: interrupt.h

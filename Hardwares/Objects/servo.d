@@ -13,5 +13,3 @@
 .\objects\servo.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
 .\objects\servo.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 .\objects\servo.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
-.\objects\servo.o: pwm.h
-.\objects\servo.o: gpio.h

@@ -11,6 +11,8 @@ void ir_sensors_init(void)
     gpio_init(PortA, 3, IN_PUSHPULL, IN);
     gpio_init(PortA, 4, IN_PUSHPULL, IN);
 	
+	GPIOA->ODR |= (1 << 3) | (1 << 4); // pull up;
+	
 }
 
 uint8_t ir1_sensor_read(void)

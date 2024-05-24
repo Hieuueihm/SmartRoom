@@ -22,12 +22,43 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Workspace\Embedded\End_PJ\Hardwares\i2c.uvprojx
-Project File Date:  05/21/2024
+Project File Date:  05/24/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\Compilerv506\Bin'
 Build target 'Target 1'
-".\Objects\i2c.axf" - 0 Error(s), 0 Warning(s).
+compiling main.c...
+systick.h(9): warning:  #1295-D: Deprecated declaration get_tick - give arg types
+  uint32_t get_tick();
+systick.h(11): warning:  #1-D: last line of file ends without a newline
+  #endif
+i2c_lcd.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+uart.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+adc.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+pwm.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif
+lowpass.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif		
+ir_sensor.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+dht11.h(18): warning:  #1-D: last line of file ends without a newline
+  TemperatureHumidity readTemperatureHumidity();
+dht11.h(18): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
+  TemperatureHumidity readTemperatureHumidity();
+interrupt.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+main.c(146): warning:  #9-D: nested comment is not allowed
+  /*			
+main.c(154): warning:  #9-D: nested comment is not allowed
+  /*
+main.c: 13 warnings, 0 errors
+linking...
+Program Size: Code=14780 RO-data=444 RW-data=40 ZI-data=1736  
+FromELF: creating hex file...
+".\Objects\i2c.axf" - 0 Error(s), 13 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -60,8 +91,8 @@ Package Vendor: Keil
    * Component: Keil::Device:Startup@1.0.0
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/system_stm32f10x.c
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
 
    * Component: Keil::Device:StdPeriph Drivers:Framework@3.6.0
       Include file:  Device/StdPeriph_Driver/inc/misc.h
@@ -77,7 +108,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

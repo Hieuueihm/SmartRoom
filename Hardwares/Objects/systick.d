@@ -1,4 +1,5 @@
 .\objects\systick.o: systick.c
+.\objects\systick.o: systick.h
 .\objects\systick.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
 .\objects\systick.o: .\RTE\_Target_1\RTE_Components.h
 .\objects\systick.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h
@@ -12,4 +13,3 @@
 .\objects\systick.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
 .\objects\systick.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
 .\objects\systick.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
-.\objects\systick.o: systick.h

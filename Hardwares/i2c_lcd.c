@@ -1,5 +1,5 @@
 #include "i2c_lcd.h"
-
+#include "systick.h"
 /*
 P0-> RS (LCD cmd wire)
 P1-> RW (LCD cmd wire)

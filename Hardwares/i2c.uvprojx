@@ -445,14 +445,14 @@
               <FilePath>.\servo.h</FilePath>
             </File>
             <File>
-              <FileName>servo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\servo.c</FilePath>
-            </File>
-            <File>
               <FileName>relay.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\relay.h</FilePath>
+            </File>
+            <File>
+              <FileName>servo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\servo.c</FilePath>
             </File>
             <File>
               <FileName>relay.c</FileName>
@@ -518,6 +518,16 @@
               <FileName>lowpass.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\lowpass.h</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\interrupt.h</FilePath>
             </File>
           </Files>
         </Group>
