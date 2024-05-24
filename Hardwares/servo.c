@@ -17,6 +17,8 @@ void servo_init(void)
     TIM2->CCMR1 |= TIM_CCMR1_OC2M_1 | TIM_CCMR1_OC2M_2; // PWM mode 1
     TIM2->CCER |= TIM_CCER_CC2E; 
     TIM2->CR1 |= TIM_CR1_CEN; // Enable TIM2
+	
+	
 }
 
 void servo_rotate(uint16_t angle)
