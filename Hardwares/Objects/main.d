@@ -15,5 +15,17 @@
 .\objects\main.o: C:\Users\NGUYEN VIET DUC\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
 .\objects\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
 .\objects\main.o: uart.h
+<<<<<<< HEAD
+.\objects\main.o: adc.h
+.\objects\main.o: pwm.h
+.\objects\main.o: C:\Keil_v5\ARM\Compilerv506\Bin\..\include\stdio.h
+.\objects\main.o: lowpass.h
+.\objects\main.o: servo.h
+.\objects\main.o: relay.h
+.\objects\main.o: ir_sensor.h
+.\objects\main.o: dht11.h
+.\objects\main.o: interrupt.h
+=======
 .\objects\main.o: gpio.h
 .\objects\main.o: systick.h
+>>>>>>> 7b62d70d8b8d6f34d861cc632833a048a4109e97
