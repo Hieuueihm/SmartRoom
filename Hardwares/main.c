@@ -1,8 +1,6 @@
-#include "stm32f10x.h"
-#include "i2c.h"
-#include "i2c_lcd.h"
-#include "systick.h"
+#include "dht11.h"
 #include "uart.h"
+<<<<<<< HEAD
 #include "gpio.h"
 #include "adc.h"
 #include "pwm.h"
@@ -22,6 +20,8 @@
 
 
 char num[50];
+#include "systick.h"
+char num[10];
 volatile int analog_rx = 0;
 uint8_t state = 0;
 char dht[50];
@@ -33,7 +33,12 @@ char nopeople[3];
 
 volatile uint32_t last_time = 0;
 
+int main(void)
+{
+	SystemClock_Config();
+	systick_init();
 
+<<<<<<< HEAD
 int main(void){
 
 	
@@ -240,3 +245,15 @@ dht11 = readTemperatureHumidity();
 	}
 
 
+	uart_init(UART3, BR_115200);
+	GPIOdht_config();
+	TemperatureHumidity dht11; // = readTemperatureHumidity();
+	while (1)
+	{
+		dht11 = readTemperatureHumidity();
+		char num[500];
+
+		snprintf(num, sizeof(num), "%.2f %.2f\n", dht11.humidity, dht11.temperature);
+		uart_send_msg(UART3, num);
+	}
+}

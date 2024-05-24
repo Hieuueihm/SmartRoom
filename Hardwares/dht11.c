@@ -76,6 +76,7 @@ int read_GPIO(void)
 {
    return (GPIOA->IDR & (1 << 0)) ? 1 : 0;
 }
+<<<<<<< HEAD
 void SystemClock_Config(void)
 {
    RCC->CR |= RCC_CR_HSEON;
@@ -90,21 +91,32 @@ void SystemClock_Config(void)
       ;
    SystemCoreClockUpdate();
 }
+=======
+
+>>>>>>> 7b62d70d8b8d6f34d861cc632833a048a4109e97
 void DHT11_Start(void)
 {
    set_GPIO_output();
    // Set PA0 low
    GPIOA->BSRR = (1 << 16);
+<<<<<<< HEAD
    delay_us(18000);
    // Set PA0 high
    GPIOA->BSRR = 1;
    delay_us(20);
+=======
+   delay_uis(18000);
+   // Set PA0 high
+   GPIOA->BSRR = 1;
+   delay_uis(20);
+>>>>>>> 7b62d70d8b8d6f34d861cc632833a048a4109e97
    set_GPIO_input();
 }
 
 int DHT11_CheckResponse(void)
 {
    int response = 0;
+<<<<<<< HEAD
    delay_us(40);
    if (!read_GPIO())
    {
@@ -112,6 +124,15 @@ int DHT11_CheckResponse(void)
       if (read_GPIO())
          response = 1;
       delay_us(50);
+=======
+   delay_uis(40);
+   if (!read_GPIO())
+   {
+      delay_uis(80);
+      if (read_GPIO())
+         response = 1;
+      delay_uis(50);
+>>>>>>> 7b62d70d8b8d6f34d861cc632833a048a4109e97
    }
    return response;
 }
@@ -123,7 +144,11 @@ uint8_t DHT11_ReadByte(void)
    {
       while (!read_GPIO())
          ;
+<<<<<<< HEAD
       delay_us(40);
+=======
+      delay_uis(40);
+>>>>>>> 7b62d70d8b8d6f34d861cc632833a048a4109e97
       if (!read_GPIO())
          data &= ~(1 << (7 - i));
       else
@@ -135,4 +160,32 @@ uint8_t DHT11_ReadByte(void)
    }
    return data;
 }
+<<<<<<< HEAD
 
+=======
+void SystemClock_Config(void)
+{
+   RCC->CR |= RCC_CR_HSEON;
+   while (!(RCC->CR & RCC_CR_HSERDY))
+      ;
+   RCC->CFGR |= RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL9;
+   RCC->CR |= RCC_CR_PLLON;
+   while (!(RCC->CR & RCC_CR_PLLRDY))
+      ;
+   RCC->CFGR |= RCC_CFGR_SW_PLL;
+   while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL)
+      ;
+   SystemCoreClockUpdate();
+}
+void delay_uis(uint32_t microseconds)
+{
+   SysTick->LOAD = (SystemCoreClock / 1000000) * microseconds - 1;
+   SysTick->VAL = 0;
+   // Enable SysTick
+   SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk;
+   while ((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) == 0)
+      ;
+   // disable SysTick
+   SysTick->CTRL = 0;
+}
+>>>>>>> 7b62d70d8b8d6f34d861cc632833a048a4109e97
