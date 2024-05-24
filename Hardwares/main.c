@@ -1,6 +1,5 @@
 #include "dht11.h"
 #include "uart.h"
-<<<<<<< HEAD
 #include "gpio.h"
 #include "adc.h"
 #include "pwm.h"
@@ -11,6 +10,9 @@
 #include "ir_sensor.h"
 #include "dht11.h"
 #include "interrupt.h"
+#include "systick.h"
+#include "i2c_lcd.h"
+
 
 #define ACTIVE_STATE 0
 #define ALARM_STATE 1
@@ -20,8 +22,6 @@
 
 
 char num[50];
-#include "systick.h"
-char num[10];
 volatile int analog_rx = 0;
 uint8_t state = 0;
 char dht[50];
@@ -33,12 +33,7 @@ char nopeople[3];
 
 volatile uint32_t last_time = 0;
 
-int main(void)
-{
-	SystemClock_Config();
-	systick_init();
 
-<<<<<<< HEAD
 int main(void){
 
 	
@@ -51,7 +46,7 @@ int main(void){
 	relay_init();	
 	//relay_on(1);
 
-
+	
 		lcd_i2c_init(I2C_1);
 	lcd_i2c_msg(I2C_1, 1, 0, "Num Of People: ");
 	snprintf(nopeople, sizeof(nopeople), "%d", nop);
@@ -124,7 +119,6 @@ dht11 = readTemperatureHumidity();
 			case DOOR_OP_STATE_1:
 				if(nop >= 1){
 					relay_on(1);
-					delay_ms(10);
 				}else{
 					relay_off(1);
 				}
@@ -245,15 +239,4 @@ dht11 = readTemperatureHumidity();
 	}
 
 
-	uart_init(UART3, BR_115200);
-	GPIOdht_config();
-	TemperatureHumidity dht11; // = readTemperatureHumidity();
-	while (1)
-	{
-		dht11 = readTemperatureHumidity();
-		char num[500];
 
-		snprintf(num, sizeof(num), "%.2f %.2f\n", dht11.humidity, dht11.temperature);
-		uart_send_msg(UART3, num);
-	}
-}
