@@ -40,7 +40,7 @@ void TIM1_UP_IRQHandler(void) {
 
 
 #define ACTIVE_STATE 0
-#define ALARM_STATE 1
+#define ALERT_STATE 1
 #define DOOR_OP_STATE 2
 
 
@@ -134,7 +134,7 @@ int main(void){
 		
 		// if it detect = 0 -> alarm system
 		if(gpio_read(PortB, 9) == 0 || gpio_read(PortB, 8) == 0){
-				state = ALARM_STATE;
+				state = ALERT_STATE;
 				relay_on(2);
 				last_time_fire_alarm = counter;
 				servo_rotate(90);
@@ -182,7 +182,7 @@ int main(void){
 					state = DOOR_OP_STATE;
 				}
 				break;
-			case ALARM_STATE:
+			case ALERT_STATE:
 				// after 5s if not fire -> turn off fire alarm system
 				if(abs(counter,last_time_fire_alarm) >= TIME_5S && abs(counter, last_time_open_door) < TIME_5S)
 			{
