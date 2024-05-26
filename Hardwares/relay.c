@@ -34,10 +34,10 @@ void relay_off(uint8_t relay_num)
     switch(relay_num)
     {
         case 1:
-            GPIOA->BRR |= 1 << 5; 
+            GPIOA->BRR |= RELAY_GPIO_PIN1; 
             break;
         case 2:
-            GPIOA->BRR |= 1 << 6; 
+            GPIOA->BRR |= RELAY_GPIO_PIN2; 
             break;
         default:
             break;

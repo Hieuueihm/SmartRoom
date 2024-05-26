@@ -35,7 +35,7 @@ float filt(lowpass_filter * lp, float xn){
         lp->x[k] = lp->x[k-1];
       }
   
-      // Return the filtered value    
+     // Return the filtered value    
       return lp->y[0];
 }
 

@@ -13,28 +13,9 @@
 #include "systick.h"
 #include "i2c_lcd.h"
 
-
-#define ACTIVE_STATE 0
-#define ALARM_STATE 1
-#define DOOR_OP_STATE 2
-
-
-char num[50];
-volatile int analog_rx = 0;
-volatile uint8_t state = 0;
-char dht[50];
-volatile uint8_t nop = 0;
-volatile uint8_t nop_flag_ir1 = 0;
-volatile uint8_t nop_flag_ir2 = 0;
-
-char nopeople[3];
-
-volatile uint32_t last_time_open_door = 0;
-volatile uint32_t last_time_fire_alarm = 0;
-volatile uint32_t last_time_update_all = 0;
 volatile uint32_t counter = 0;
-volatile uint32_t las_time_go_door = 0;
 
+// counter 0 -> 0xFFFF  -> after 16 minutes -> reset 0
 void TIM1_UP_IRQHandler(void) {
     if (TIM1->SR & TIM_SR_UIF) { // Check if update interrupt flag is set
         TIM1->SR &= ~TIM_SR_UIF; // Clear the update interrupt flag
@@ -42,183 +23,191 @@ void TIM1_UP_IRQHandler(void) {
     }
 }
 
+
+
+#define abs(x, y) (x > y ? x - y  : y - x)
+
+
+#define DOOR_OP 1
+#define DOOR_CL 0
+
+#define RELAY_1_ON 1
+#define RELAY_1_OFF 0
+
+#define RELAY_2_ON 1
+#define RELAY_2_OFF 0
+
+
+
+#define ACTIVE_STATE 0
+#define ALARM_STATE 1
+#define DOOR_OP_STATE 2
+
+
+#define TIME_5S 20
+#define TIME_3S 12
+#define TIME_1S 4
+#define TIME_2S 8
+#define TIME_0_5S 2
+#define TIME_0_25S 1
+
+
+void handle_ir_open_door(void);
+
+
+char num[50];
+volatile int analog_rx = 0;
+volatile uint8_t state = 0;
+char dht[50];
+volatile uint8_t nop = 0;
+volatile uint8_t flag_ir1 = 0;
+volatile uint8_t flag_ir2 = 0;
+
+char nopeople[3];
+
+volatile u16 last_time_ir1_request = 0;
+volatile u16 last_time_ir2_request = 0;
+volatile uint32_t last_time_open_door = 0;
+volatile uint32_t last_time_fire_alarm = 0;
+volatile uint32_t last_time_update_all = 0;
+volatile uint32_t las_time_go_door = 0;
+volatile u8 door_state = 0;
+
+
+volatile u8 ir1_last_state = 1;
+volatile u8 ir2_last_state = 1;
+volatile u8 relay_1_state = 0;
+
+u8 temp=0,humi=0;
+
+
+
+
+
 int main(void){
 
 	
 		
 		systick_init();
-		pwm_init(TIM_3, CHANNEL_3);
-		set_duty(TIM_3, CHANNEL_3, ARRD);
-
-	relay_init();	
-
 	
-	
+		relay_init();	
 		lcd_i2c_init(I2C_1);
-	lcd_i2c_msg(I2C_1, 1, 0, "Num Of People: ");
-	snprintf(nopeople, sizeof(nopeople), "%d", nop);
-							lcd_i2c_msg(I2C_1, 1, 14, nopeople);
-
+	
+	
+		servo_init();
+		ir_sensors_init();
+	
+	
+		// Port of flame, gas sensor	
+		
+		gpio_init(PortB, 8, IN_PUSHPULL, IN);
+		gpio_init(PortB, 9, IN_PUSHPULL, IN);
+			
+		DHT11_Init();
+	
 		lowpass_filter lp;
 		lowpass_init(&lp, 0.1, 2);
-		//relay_on(2);
+
+		lcd_i2c_msg(I2C_1, 1, 0, "Num Of People: ");
+		snprintf(nopeople, sizeof(nopeople), "%d", nop);
+		lcd_i2c_msg(I2C_1, 1, 14, nopeople);
+
+
+
+
+		servo_rotate(0);
+		door_state = DOOR_CL;
+		delay_ms(100);
+		
+	 //	intr_init();
+					
+		//EXTI->PR |= (1 << 8) | (1 << 9);
+	pwm_init(TIM_3, CHANNEL_3);
+		set_duty(TIM_3, CHANNEL_3, ARRD);
 		adc_init(ADC_1, PortA, 2);
 
 	
-		servo_init();
-	ir_sensors_init();
 
-//relay_off(1);
 
-	//			delay_ms(3000);
-		//		relay_off(2);
-		gpio_init(PortB, 8, IN_PUSHPULL, IN);
-		gpio_init(PortB, 9, IN_PUSHPULL, IN);
-			DHT11_Init();
-
-		servo_rotate(0);
-
-		delay_ms(100);
+	while(1){		
 		
-	 u8 temp=0,humi=0;
-	 		//	intr_init();
-					
-					//EXTI->PR |= (1 << 8) | (1 << 9);
-
-	
-
-
-	while(1){			
-		if(counter - last_time_update_all >= 1){
-						analog_rx = adc_rx(ADC_1, PortA, 2);
-			analog_rx = filt(&lp, analog_rx);
-		set_duty(TIM_3, CHANNEL_3, (analog_rx / 4096.0) * ARRD);
-					DHT11_Read_Data(&temp,&humi);
+		// if it detect = 0 -> alarm system
+		if(gpio_read(PortB, 9) == 0 || gpio_read(PortB, 8) == 0){
+				state = ALARM_STATE;
+				relay_on(2);
+				last_time_fire_alarm = counter;
+				servo_rotate(90);
+				last_time_open_door = counter;
+				delay_ms(10);
+			
+		
+		}
+		
+		
+		if(counter - last_time_update_all >= TIME_0_25S){
+		
+			DHT11_Read_Data(&temp,&humi);
 
 			last_time_update_all = counter;
-			snprintf(num, sizeof(num), "%d %d %d", temp, humi, counter);
-				lcd_i2c_msg(I2C_1, 2, 0,num);
+			snprintf(num, sizeof(num), "Temp:%d Humi:%d ", temp, humi);
+			lcd_i2c_msg(I2C_1, 2, 0,num);
 			lcd_i2c_msg(I2C_1, 1, 14, nopeople);
 			
+			analog_rx = adc_rx(ADC_1, PortA, 2);
+			analog_rx =  filt(&lp, analog_rx);
+			set_duty(TIM_3, CHANNEL_3, (analog_rx / 4096.0) * ARRD);		
 	
-				//delay_ms(100);
-		if(ir1_sensor_read() == 0 && nop_flag_ir2 == 0){
-				servo_rotate(90);
-				delay_ms(100);
-				nop_flag_ir1 = 1;
-		}else if(ir1_sensor_read()== 0 && nop_flag_ir2 == 1){
-				nop--;
-				snprintf(nopeople, sizeof(nopeople), "%d", nop);
-				relay_off(1);
-				nop_flag_ir2 = 0;
 		}
-		if(ir2_sensor_read() == 0 && nop_flag_ir1 == 1){
-				nop++;
-				snprintf(nopeople, sizeof(nopeople), "%d", nop);
+
+		handle_ir_open_door();
+		
+		if(nop >0 ){
+			if(relay_1_state == RELAY_1_OFF){
 				relay_on(1);
-				nop_flag_ir1 = 0;
-		}else if(ir2_sensor_read() == 0 && nop_flag_ir1 == 0){
-				nop_flag_ir2 = 1;
-				servo_rotate(90);
-				delay_ms(100);
+				relay_1_state = RELAY_1_ON;
+			}
+		}else if(nop  ==0 ){
+			if(relay_1_state == RELAY_1_ON){
+							relay_off(1);
+					relay_1_state = RELAY_1_OFF;
+
+
+			}
 		}
 		
-			
-
-		}
-		
-		if(gpio_read(PortB, 9) == 0 || gpio_read(PortB, 8) == 0){
-			
-		
-		}
-		
-	
-					
-		
-
-		
-	
-	
-
-		/*
-		
-		if()
-		DHT11_Read_Data(&temp,&humi);
-			
-		
-		lcd_i2c_msg(I2C_1, 1, 14, nopeople);
-		
-		delay_ms(1000);
-		switch(state){		
+		switch(state){
 			case ACTIVE_STATE:
+				if(abs(counter, last_time_open_door) < TIME_5S){
+					state = DOOR_OP_STATE;
+				}
 				break;
 			case ALARM_STATE:
-			
+				// after 5s if not fire -> turn off fire alarm system
+				if(abs(counter,last_time_fire_alarm) >= TIME_5S && abs(counter, last_time_open_door) < TIME_5S)
+			{
+					state = DOOR_OP_STATE;
+					relay_off(2);
+					
+				}else if(abs(counter, last_time_fire_alarm) >= TIME_5S && abs(counter, last_time_open_door) >= TIME_5S){
+					relay_off(2);
+					state= ACTIVE_STATE;
+					servo_rotate(0);
+					delay_us(100); // delay 100 micro s
+				}
 				break;
 			case DOOR_OP_STATE:
-			
-				if(counter - last_time_go_door >= 5){
-
-						servo_rotate(0);
-					
-						delay_ms(1000);
-						state = ACTIVE_STATE;
-					}else{
-								
-		
-							if(nop >= 1){
-								relay_on(1);
-							}else{
-									relay_off(1);
-						}
-						}
-			
+				if(abs(counter, last_time_open_door) >= TIME_5S){
+					door_state = DOOR_CL;
+					servo_rotate(0);
+					delay_us(100);
+					state = ACTIVE_STATE;
+				}
 				break;
-		
-			default:
-				break;
-			
+		}
 			
 		
-
-		}
-		
-		/*
-		
 			
-/*			
-		dht11 = readTemperatureHumidity();
-		snprintf(dht,sizeof(dht) ,"%.2f   %.2f", dht11.humidity, dht11.temperature);
-
-					lcd_i2c_msg(I2C_1, 2, 0,dht);
-//delay_ms(1000);
-		//uart_send_msg(UART3, num);
-		
-/*
-			if(adc_check(ADC_1, PortA, 2)){
-				analog_rx = adc_rx(ADC_1, PortA, 2);
-		set_duty(TIM_3, CHANNEL_3, (analog_rx / 4096.0) * ARRD);
-				//delay_ms(100);
-
 		}
-	*/	
-			//snprintf(num, sizeof(num), "%d, ",   analog_rx);	
-
-			//uart_send_msg(UART3, num);
-		//delay_ms(100);/
-	/*	
-		if(ir1_sensor_read() == 0  || ir2_sensor_read() == 0){
-
-			 servo_rotate(90);
-			  delay_ms(2000);				
-			  servo_rotate(0);
-				delay_ms(1000);
-
-		}
-		*/
-		
-	}
-
 	}
 /*
 	void EXTI3_IRQHandler(){
@@ -280,3 +269,61 @@ int main(void){
 
 
 */
+
+
+void handle_ir_open_door(){
+			// falling edge
+
+		if(ir1_sensor_read() == 0 && ir1_last_state == 1){
+			ir1_last_state = 0;
+			if(flag_ir2 == 1){
+				if(nop >0){
+					nop--;
+				}
+				snprintf(nopeople, sizeof(nopeople), "%d", nop);
+				flag_ir2 = 0;
+			}else if(flag_ir2 == 0){
+					if(door_state == DOOR_CL){
+						servo_rotate(90);
+						delay_ms(10);
+						door_state = DOOR_OP;
+					}
+					flag_ir1 = 1;
+					last_time_ir1_request = counter;				
+			}
+		}else if(ir1_sensor_read() == 1 && ir1_last_state == 0){
+			ir1_last_state = ir1_sensor_read();
+			last_time_open_door = counter;
+		}
+		
+		
+		if(ir2_sensor_read() == 0 && ir2_last_state == 1){
+			ir2_last_state = 0;
+			if(flag_ir1 == 1){
+				
+				nop++;
+				snprintf(nopeople, sizeof(nopeople), "%d", nop);
+				flag_ir1 = 0;
+			}else if(flag_ir1 == 0){
+					if(door_state == DOOR_CL){
+						servo_rotate(90);
+						delay_ms(10);
+						door_state = DOOR_OP;
+					}
+					flag_ir2 = 1;
+					last_time_ir2_request = counter;				
+			}
+		}else if(ir2_sensor_read() == 1 && ir2_last_state == 0){
+			ir2_last_state = ir2_sensor_read();
+			last_time_open_door = counter;
+		}
+				// people stand in front of the door but not go
+
+		if(counter - last_time_ir1_request >= TIME_2S)
+		{
+			flag_ir1 = 0;
+		}
+		if(counter - last_time_ir2_request >= TIME_2S){
+			flag_ir2 = 0;
+		}
+}

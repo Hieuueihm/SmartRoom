@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\Workspace\Embedded\End_PJ\Hardwares\i2c.uvprojx
-Project File Date:  05/24/2024
+Project File Date:  05/25/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\Compilerv506\Bin'
@@ -46,19 +46,13 @@ interrupt.h(7): warning:  #1-D: last line of file ends without a newline
   #endif
 i2c_lcd.h(22): warning:  #1-D: last line of file ends without a newline
   #endif
-main.c(186): warning:  #9-D: nested comment is not allowed
-  		/*
-main.c(189): warning:  #9-D: nested comment is not allowed
-  /*			
-main.c(197): warning:  #9-D: nested comment is not allowed
-  /*
-main.c(282): warning:  #1-D: last line of file ends without a newline
-  */
-main.c: 13 warnings, 0 errors
+main.c(327): warning:  #1-D: last line of file ends without a newline
+  }
+main.c: 10 warnings, 0 errors
 linking...
-Program Size: Code=10428 RO-data=268 RW-data=52 ZI-data=1732  
+Program Size: Code=11104 RO-data=268 RW-data=64 ZI-data=1736  
 FromELF: creating hex file...
-".\Objects\i2c.axf" - 0 Error(s), 13 Warning(s).
+".\Objects\i2c.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -89,26 +83,26 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE@5.6.0
 
    * Component: Keil::Device:Startup@1.0.0
-      Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/system_stm32f10x.c
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+      Source file:   Device/Source/system_stm32f10x.c
+      Include file:  RTE_Driver/Config/RTE_Device.h
 
    * Component: Keil::Device:StdPeriph Drivers:Framework@3.6.0
-      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
+      Include file:  Device/StdPeriph_Driver/inc/misc.h
       Source file:   Device/StdPeriph_Driver/templates/stm32f10x_it.c
+      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
       Source file:   Device/StdPeriph_Driver/src/misc.c
       Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
-      Include file:  Device/StdPeriph_Driver/inc/misc.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO@3.6.0
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_gpio.c
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_gpio.h
 
    * Component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
-      Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
-Build Time Elapsed:  00:00:01
+      Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
