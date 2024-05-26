@@ -20,6 +20,7 @@ void intr_init(){
 	NVIC_SetPriority(EXTI3_IRQn, 2);
 	NVIC_SetPriority(EXTI4_IRQn, 2);
 	NVIC_SetPriority(EXTI9_5_IRQn, 1);
+	
 	NVIC_EnableIRQ(EXTI9_5_IRQn);
 	NVIC_EnableIRQ(EXTI3_IRQn);
 

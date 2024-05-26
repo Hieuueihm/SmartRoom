@@ -15,8 +15,8 @@
 .\objects\main.o: C:\Users\gbmhi\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
 .\objects\main.o: C:\Keil_v5\ARM\Compilerv506\Bin\..\include\stdio.h
 .\objects\main.o: systick.h
-.\objects\main.o: gpio.h
 .\objects\main.o: uart.h
+.\objects\main.o: gpio.h
 .\objects\main.o: adc.h
 .\objects\main.o: pwm.h
 .\objects\main.o: lowpass.h
