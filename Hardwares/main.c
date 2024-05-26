@@ -103,7 +103,8 @@ int main(void){
 		gpio_init(PortB, 8, IN_PUSHPULL, IN);
 		gpio_init(PortB, 9, IN_PUSHPULL, IN);
 			
-		DHT11_Init();
+		GPIOdht_config();
+		TemperatureHumidity dht11; // = readTemperatureHumidity();
 	
 		lowpass_filter lp;
 		lowpass_init(&lp, 0.1, 2);
@@ -146,10 +147,10 @@ int main(void){
 		
 		if(counter - last_time_update_all >= TIME_0_25S){
 		
-			DHT11_Read_Data(&temp,&humi);
+			dht11 = readTemperatureHumidity();
 
 			last_time_update_all = counter;
-			snprintf(num, sizeof(num), "Temp:%d Humi:%d ", temp, humi);
+			snprintf(num, sizeof(num), "Temp:%d Humi:%d ", dht11.temperature, dht11.humidity);
 			lcd_i2c_msg(I2C_1, 2, 0,num);
 			lcd_i2c_msg(I2C_1, 1, 14, nopeople);
 			

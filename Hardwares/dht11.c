@@ -1,93 +1,124 @@
 #include "dht11.h"
+#include <stdio.h>
+#include "systick.h"
 
-u8 DHT11_Init(void){
-	GPIO_InitTypeDef  GPIO_InitStructure;
-	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;			    //LED0-->PB.5 
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//GPIO_Mode_Out_PP; 	 
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;//GPIO_Speed_50MHz;	 
-  GPIO_Init(GPIOA, &GPIO_InitStructure);			     //GPIOB.5
-	
-	DHT11_DQ_OUT=1;
-	DHT11_Rst();
-	
-	return DHT11_Check();
+TemperatureHumidity readTemperatureHumidity()
+{
+   TemperatureHumidity result;
+   DHT11_Start();
+   /*    uint8_t RH_integral = DHT11_ReadByte();
+     uint8_t RH_decimal = DHT11_ReadByte();
+     uint8_t T_integral = DHT11_ReadByte();
+     uint8_t T_decimal = DHT11_ReadByte();
+     uint8_t checksum = DHT11_ReadByte();
+      result.temperature = T_integral + (T_decimal / 100.0);
+     result.humidity = RH_integral + (RH_decimal / 100.0);
+*/
+   if (DHT11_CheckResponse())
+   {
+      uint8_t RH_integral = DHT11_ReadByte();
+      uint8_t RH_decimal = DHT11_ReadByte();
+      uint8_t T_integral = DHT11_ReadByte();
+      uint8_t T_decimal = DHT11_ReadByte();
+      uint8_t checksum = DHT11_ReadByte();
+
+      // Ki?m tra checksum
+      if (checksum == ((RH_integral + RH_decimal + T_integral + T_decimal) & 0xFF))
+      {
+         result.temperature = T_integral + (T_decimal / 100.0);
+         result.humidity = RH_integral + (RH_decimal / 100.0);
+      }
+      else
+      {
+
+         result.temperature = -1.0;
+         result.humidity = -1.0;
+      }
+   }
+   else
+   {
+      result.temperature = -1.0;
+      result.humidity = -1.0;
+   }
+
+   return result;
 }
 
-void DHT11_Rst(void){
-	
-	DHT11_IO_OUT();
-	
-	DHT11_DQ_OUT=0;
-	delay_ms(20);
-	DHT11_DQ_OUT=1;
-	delay_us(30);
-	
+void GPIOdht_config(void)
+{
+   // Enable clock for GPIOA, bit2(IOPAEN)
+   RCC->APB2ENR |= (1 << 2);
+   // Clear MODE0 and CNF0
+   GPIOA->CRL &= ~((0x3 << 0) | (0x3 << 2));
+   // Output mode 10, Max speed 2Mhz
+   GPIOA->CRL |= (0x2 << 0);
+   // Output open drain 01
+   GPIOA->CRL |= (0x1 << 2);
 }
 
-u8 DHT11_Check(void){
-	u8 time=0;
-	DHT11_IO_IN();
-	while(DHT11_DQ_IN&&time<100){time++;delay_us(1);}//cho xuong
-	if(time>=100) return 1;//loi
-	else time=0;
-	while(!DHT11_DQ_IN&&time<100){time++;delay_us(1);}// cho len
-	if(time>=100) return 1;//loi
-	else return 0;
-	
-	//return 0;
+void set_GPIO_input(void)
+{
+   // Clear MODE0 and CNF0
+   GPIOA->CRL &= ~((0x3 << 0) | (0x3 << 2));
+   // Floating input
+   GPIOA->CRL |= (0x1 << 2);
 }
 
-u8 DHT11_Read_Bit(void){
-	
-	u8 time=0;
-	
-	while(DHT11_DQ_IN&&time<100){time++;delay_us(1);}//cho xuong
-
-	time=0;
-	while(!DHT11_DQ_IN&&time<100){time++;delay_us(1);}// cho len
-	delay_us(40);
-	if(DHT11_DQ_IN) return 1;
-	else return 0;
-	
-	//return 0;
+void set_GPIO_output(void)
+{
+   // Clear CNF0 bits
+   GPIOA->CRL &= ~(0x3 << 2);
+   // MODE0 = 10, CNF0 = 01 (Output open-drain)
+   GPIOA->CRL |= (0x2 << 0) | (0x1 << 2);
 }
 
-u8 DHT11_Read_Byte(void){
-	u8 i=0;
-	u8 data=0;//00000001
-	
-	for(i=0;i<8;i++){
-		
-		data<<=1;
-		data|=DHT11_Read_Bit();
-		
-	}
-	return data;
+int read_GPIO(void)
+{
+   return (GPIOA->IDR & (1 << 0)) ? 1 : 0;
 }
 
-u8 DHT11_Read_Data(u8 *temp,u8 *humi){
-	u8 i=0;
-	u8 buf[5];
-	
-	DHT11_Rst();
-	
-	if(DHT11_Check()==0)
-	{
-		for(i=0;i<5;i++){
-			
-			buf[i]=DHT11_Read_Byte();
-			
-		}
-		
-		if(buf[0]+buf[1]+buf[2]+buf[3]==buf[4])
-		{
-			*humi=buf[0]; 
-			*temp=buf[2];
-		}
-	}else return 1;//loi
-	return 0;//ok
+void DHT11_Start(void)
+{
+   set_GPIO_output();
+   // Set PA0 low
+   GPIOA->BSRR = (1 << 16);
+   delay_us(18000);
+   // Set PA0 high
+   GPIOA->BSRR = 1;
+   delay_us(20);
+   set_GPIO_input();
 }
 
+int DHT11_CheckResponse(void)
+{
+   int response = 0;
+   delay_us(40);
+   if (!read_GPIO())
+   {
+      delay_us(80);
+      if (read_GPIO())
+         response = 1;
+      delay_us(50);
+   }
+   return response;
+}
+
+uint8_t DHT11_ReadByte(void)
+{
+   uint8_t i, data = 0;
+   for (i = 0; i < 8; i++)
+   {
+      while (!read_GPIO())
+         ;
+      delay_us(40);
+      if (!read_GPIO())
+         data &= ~(1 << (7 - i));
+      else
+      {
+         data |= (1 << (7 - i));
+         while (read_GPIO())
+            ;
+      }
+   }
+   return data;
+}
