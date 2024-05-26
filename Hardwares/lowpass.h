@@ -8,7 +8,7 @@ typedef struct LowPassFilter {
     float a[1];
     float b[2];
     float omega0;
-    float dt;
+    float t;
     float x[2]; 
     float y[2]; 
 } lowpass_filter;
