@@ -14,12 +14,14 @@ void systick_init(void)
 	while(!(TIM4->SR & (1 << 0)));
 	
   TIM1->PSC = (SystemCoreClock / 2000) - 1; // Prescaler to get 2 kHz time base
-   TIM1->ARR = 500 - 1; // Auto-reload value for 1 second overflow
+   TIM1->ARR = 500 - 1; // Auto-reload value for 0.25s
     TIM1->DIER |= TIM_DIER_UIE; // Enable update interrupt
     TIM1->CR1 |= TIM_CR1_CEN; // Enable TIM1
 
     // Enable TIM1 update interrupt in NVIC
+	NVIC_SetPriority(TIM1_UP_IRQn, 15);
     NVIC_EnableIRQ(TIM1_UP_IRQn);
+	
 	 
 
 	

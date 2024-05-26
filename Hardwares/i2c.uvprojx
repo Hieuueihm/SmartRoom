@@ -446,14 +446,14 @@
               <FilePath>.\servo.h</FilePath>
             </File>
             <File>
-              <FileName>relay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\relay.h</FilePath>
-            </File>
-            <File>
               <FileName>servo.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\servo.c</FilePath>
+            </File>
+            <File>
+              <FileName>relay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\relay.h</FilePath>
             </File>
             <File>
               <FileName>relay.c</FileName>
