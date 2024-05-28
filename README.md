@@ -13,6 +13,15 @@
 
 - [Nguyen Viet Duc - 21020904, UET-VNU](https://github.com/vieedu3vif)
 
+
+## Folder Structure
+SmartRoom/
+├── ADHApp: mobile application.
+├── ESP32_WS: esp32 web server.
+├── Hardwares: includes C code built from scratch for our sensors, actuators, ... 
+├── Server: provides api for our applications.
+├── Web: admin webpage.
+└── README.md
 ## Hardware description and programing languages
 
 ### Hardwares
