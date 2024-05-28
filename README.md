@@ -16,11 +16,17 @@
 
 ## Folder Structure
 SmartRoom/
+
 ├── ADHApp: mobile application.
+
 ├── ESP32_WS: esp32 web server.
+
 ├── Hardwares: includes C code built from scratch for our sensors, actuators, ... 
+
 ├── Server: provides api for our applications.
+
 ├── Web: admin webpage.
+
 └── README.md
 ## Hardware description and programing languages
 
