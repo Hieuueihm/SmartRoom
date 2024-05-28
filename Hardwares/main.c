@@ -69,8 +69,8 @@ volatile u16 last_time_ir1_request = 0;
 volatile u16 last_time_ir2_request = 0;
 volatile uint32_t last_time_open_door = 0;
 volatile uint32_t last_time_fire_alarm = 0;
-volatile uint32_t last_time_update_all = 0;
-volatile uint32_t las_time_go_door = 0;
+volatile uint32_t last_time_update_dht = 0;
+volatile uint32_t last_time_update_pwm = 0;
 volatile u8 door_state = 0;
 
 
@@ -145,20 +145,25 @@ int main(void){
 		}
 		
 		
-		if(counter - last_time_update_all >= TIME_0_25S){
+		if(counter - last_time_update_dht >= TIME_1S){
 		
 			dht11 = readTemperatureHumidity();
 
-			last_time_update_all = counter;
+			last_time_update_dht = counter;
 			snprintf(num, sizeof(num), "Temp:%d Humi:%d ", dht11.temperature, dht11.humidity);
 			lcd_i2c_msg(I2C_1, 2, 0,num);
 			lcd_i2c_msg(I2C_1, 1, 14, nopeople);
 			
-			analog_rx = adc_rx(ADC_1, PortA, 2);
-			analog_rx =  filt(&lp, analog_rx);
-			set_duty(TIM_3, CHANNEL_3, (analog_rx / 4096.0) * ARRD);		
+			
 	
 		}
+		if(counter - last_time_update_pwm >= TIME_0_25S){
+			last_time_update_pwm = counter;
+				analog_rx = adc_rx(ADC_1, PortA, 2);
+			analog_rx =  filt(&lp, analog_rx);
+			set_duty(TIM_3, CHANNEL_3, (analog_rx / 4096.0) * ARRD);
+		}
+			
 
 		handle_ir_open_door();
 		
