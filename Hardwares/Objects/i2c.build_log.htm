@@ -26,8 +26,116 @@ Project File Date:  05/25/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\Compilerv506\Bin'
-Build target 'Target 1'
-".\Objects\i2c.axf" - 0 Error(s), 0 Warning(s).
+Rebuild target 'Target 1'
+compiling main.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+dht11.h(18): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
+  TemperatureHumidity readTemperatureHumidity();
+dht11.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+uart.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+adc.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+pwm.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif
+lowpass.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif		
+ir_sensor.h(7): warning:  #1-D: last line of file ends without a newline
+  uint8_t ir2_sensor_read(void);
+interrupt.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+i2c_lcd.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+main.c(335): warning:  #1-D: last line of file ends without a newline
+  }
+main.c: 11 warnings, 0 errors
+compiling servo.c...
+servo.c(34): warning:  #1-D: last line of file ends without a newline
+  }
+servo.c: 1 warning, 0 errors
+compiling uart.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+uart.h(24): warning:  #1-D: last line of file ends without a newline
+  #endif
+uart.c: 2 warnings, 0 errors
+compiling gpio.c...
+compiling i2c_lcd.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+i2c_lcd.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+i2c_lcd.c: 2 warnings, 0 errors
+compiling i2c.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+i2c.c: 1 warning, 0 errors
+compiling systick.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+systick.c: 1 warning, 0 errors
+compiling adc.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+adc.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+adc.c: 2 warnings, 0 errors
+compiling dht11.c...
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+dht11.h(18): warning:  #1295-D: Deprecated declaration readTemperatureHumidity - give arg types
+  TemperatureHumidity readTemperatureHumidity();
+dht11.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif
+dht11.c(34): warning:  #173-D: floating-point value does not fit in required integral type
+           result.temperature = -1.0;
+dht11.c(35): warning:  #173-D: floating-point value does not fit in required integral type
+           result.humidity = -1.0;
+dht11.c(40): warning:  #173-D: floating-point value does not fit in required integral type
+        result.temperature = -1.0;
+dht11.c(41): warning:  #173-D: floating-point value does not fit in required integral type
+        result.humidity = -1.0;
+dht11.c: 7 warnings, 0 errors
+compiling mq135.c...
+mq135.h(16): warning:  #1-D: last line of file ends without a newline
+  #endif
+systick.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+adc.h(18): warning:  #1-D: last line of file ends without a newline
+  #endif
+mq135.c: 3 warnings, 0 errors
+compiling ir_sensor.c...
+ir_sensor.h(7): warning:  #1-D: last line of file ends without a newline
+  uint8_t ir2_sensor_read(void);
+ir_sensor.c: 1 warning, 0 errors
+compiling lowpass.c...
+lowpass.h(20): warning:  #1-D: last line of file ends without a newline
+  #endif		
+lowpass.c: 1 warning, 0 errors
+compiling pwm.c...
+pwm.h(25): warning:  #1-D: last line of file ends without a newline
+  #endif
+pwm.c(274): warning:  #1-D: last line of file ends without a newline
+  }
+pwm.c: 2 warnings, 0 errors
+assembling startup_stm32f10x_md.s...
+compiling interrupt.c...
+interrupt.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif
+interrupt.c(36): warning:  #1-D: last line of file ends without a newline
+  }
+interrupt.c: 2 warnings, 0 errors
+compiling misc.c...
+compiling system_stm32f10x.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling relay.c...
+linking...
+Program Size: Code=10964 RO-data=268 RW-data=64 ZI-data=1736  
+FromELF: creating hex file...
+".\Objects\i2c.axf" - 0 Error(s), 36 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -59,25 +167,25 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup@1.0.0
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
-      Source file:   Device/Source/system_stm32f10x.c
       Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/system_stm32f10x.c
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
 
    * Component: Keil::Device:StdPeriph Drivers:Framework@3.6.0
-      Include file:  Device/StdPeriph_Driver/inc/misc.h
-      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_it.c
+      Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
       Source file:   Device/StdPeriph_Driver/templates/stm32f10x_conf.h
       Source file:   Device/StdPeriph_Driver/src/misc.c
-      Include file:  Device/StdPeriph_Driver/templates/stm32f10x_it.h
+      Source file:   Device/StdPeriph_Driver/templates/stm32f10x_it.c
+      Include file:  Device/StdPeriph_Driver/inc/misc.h
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO@3.6.0
-      Source file:   Device/StdPeriph_Driver/src/stm32f10x_gpio.c
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_gpio.h
+      Source file:   Device/StdPeriph_Driver/src/stm32f10x_gpio.c
 
    * Component: Keil::Device:StdPeriph Drivers:RCC@3.6.0
       Include file:  Device/StdPeriph_Driver/inc/stm32f10x_rcc.h
       Source file:   Device/StdPeriph_Driver/src/stm32f10x_rcc.c
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
