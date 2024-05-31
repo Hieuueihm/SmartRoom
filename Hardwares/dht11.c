@@ -82,6 +82,7 @@ void DHT11_Start(void)
    set_GPIO_output();
    // Set PA0 low
    GPIOA->BSRR = (1 << 16);
+	// delay min 18ms
    delay_us(18000);
    // Set PA0 high
    GPIOA->BSRR = 1;
@@ -108,16 +109,14 @@ uint8_t DHT11_ReadByte(void)
    uint8_t i, data = 0;
    for (i = 0; i < 8; i++)
    {
-      while (!read_GPIO())
-         ;
+      while (!read_GPIO());
       delay_us(40);
       if (!read_GPIO())
          data &= ~(1 << (7 - i));
       else
       {
          data |= (1 << (7 - i));
-         while (read_GPIO())
-            ;
+         while (read_GPIO());
       }
    }
    return data;
